@@ -27,7 +27,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/goldfinch/silverstripe-encrypt/tree/ss5"
+            "url": "https://github.com/goldfinch/silverstripe-encrypt/releases/tag/3.4.2"
         },
         {
             "type": "vcs",
