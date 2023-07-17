@@ -1,6 +1,6 @@
-<% if Posts %>
+<% if InstagramPosts %>
   <ul class="socialfeed">
-    <% loop Posts %>
+    <% loop InstagramPosts %>
       <li>
         <img src="{$Data.postImage}" width="250" alt="Image">
         <div><b>Link:</b> <a href="$Data.postLink" target="_blank">$Data.postLink</a></div>
