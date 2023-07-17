@@ -27,7 +27,7 @@
     "repositories": {
         "lekoala/silverstripe-encrypt": {
             "type": "vcs",
-            "url": "https://github.com/goldfinch/silverstripe-encrypt"
+            "url": "https://github.com/goldfinch/silverstripe-encrypt/tree/ss5/3.4.2"
         },
         "phptek/jsontext": {
             "type": "vcs",
