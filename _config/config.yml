@@ -1,0 +1,7 @@
+---
+Name: socialkit
+---
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Goldfinch\SocialKit\Extensions\SiteConfigExtension
