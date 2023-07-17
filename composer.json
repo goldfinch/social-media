@@ -15,7 +15,7 @@
         "silverstripe/admin": "^2.0",
         "nesbot/carbon": "^2.67",
         "lekoala/silverstripe-encrypt": "dev-ss5 as 3.4.2",
-        "phptek/jsontext": "dev-ss5",
+        "phptek/jsontext": "dev-ss5 as 2.1.0",
         "guzzlehttp/guzzle": "^7.7",
         "unclecheese/display-logic": "^3.0"
     },
