@@ -24,16 +24,16 @@
             "Goldfinch\\SocialKit\\": "src/"
         }
     },
-    "repositories": [
-        {
+    "repositories": {
+        "lekoala/silverstripe-encrypt": {
             "type": "vcs",
             "url": "https://github.com/goldfinch/silverstripe-encrypt"
         },
-        {
+        "phptek/jsontext": {
             "type": "vcs",
             "url": "https://github.com/goldfinch/silverstripe-jsontext"
         }
-    ],
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
