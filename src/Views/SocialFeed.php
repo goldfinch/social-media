@@ -30,9 +30,7 @@ class SocialFeed extends ViewableData
             return;
         }
 
-        return $this->customise([
-          'Posts' => $this->FacebookPosts($limit)
-        ])->renderWith('Views/FacebookFeed');
+        return $this->renderWith('Views/FacebookFeed');
     }
 
     public function InstagramPosts($limit = 20)
@@ -52,9 +50,7 @@ class SocialFeed extends ViewableData
             return;
         }
 
-        return $this->customise([
-          'Posts' => $this->InstagramPosts($limit)
-        ])->renderWith('Views/InstagramFeed');
+        return $this->renderWith('Views/InstagramFeed');
     }
 
     public function Posts($limit = 20)
