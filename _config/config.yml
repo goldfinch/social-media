@@ -1,5 +1,7 @@
 ---
 Name: goldfinch-socialkit
+After:
+  - '#goldfinch-basement'
 ---
 
 SilverStripe\SiteConfig\SiteConfig:
