@@ -260,12 +260,57 @@ class SocialMeta
         }
     }
 
+    public function FacebookGetAccessToken()
+    {
+        if (!$this->facebook['page_id'] || !$this->facebook['access_token'])
+        {
+            return $this->returnFailed('Missing credentials', 403);
+        }
+
+        try {
+            $response = $this->client->request('GET', self::FACEBOOK_GRAPH . $this->facebook['page_id'], [
+                'query' => [
+                    'access_token' => $this->facebook['access_token'],
+                    'fields' => 'access_token',
+                ],
+                'headers' => $this->facebook['headers'],
+            ]);
+        }
+        catch (ClientException $e) {
+            $response = $e->getResponse();
+        }
+
+        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        {
+            $data = json_decode($response->getBody(), true);
+
+            if ($data['access_token'])
+            {
+                $this->cfg->MetaFacebookAccessToken = $data['access_token'];
+                // $this->cfg->MetaFacebookLongAccessToken = $data['access_token'];
+                // $this->cfg->MetaFacebookLongAccessTokenLastRefresh = Carbon::now()->format('Y-m-d H:i:s');
+                $this->cfg->write();
+
+                $this->facebook['access_token'] = $this->cfg->MetaFacebookAccessToken;
+
+                return $this->returnSuccess(true);
+            }
+        }
+        else
+        {
+            return $this->returnFailed($response);
+        }
+    }
+
     public function FacebookGetLongLiveToken()
     {
         if (!$this->facebook['app_id'] || !$this->facebook['app_secret'] || !$this->facebook['access_token'])
         {
             return $this->returnFailed('Missing credentials', 403);
         }
+
+        // Get access_token through Initial User Access Token (from https://developers.facebook.com/tools/explorer/)
+        $this->FacebookGetAccessToken();
 
         try {
             $response = $this->client->request('GET', self::FACEBOOK_GRAPH . 'oauth/access_token', [
