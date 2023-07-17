@@ -23,6 +23,18 @@ class SocialFeed extends ViewableData
         return SocialPost::get()->filter('Type', 'facebook')->limit($limit);
     }
 
+    public function FacebookFeed($limit = 20)
+    {
+        if (!$this->authorized('MetaFacebook'))
+        {
+            return;
+        }
+
+        return $this->customise([
+          'Posts' => $this->FacebookPosts($limit)
+        ])->renderWith('Views/FacebookFeed');
+    }
+
     public function InstagramPosts($limit = 20)
     {
         if (!$this->authorized('MetaInstagram'))
@@ -31,6 +43,18 @@ class SocialFeed extends ViewableData
         }
 
         return SocialPost::get()->filter('Type', 'instagram')->limit($limit);
+    }
+
+    public function InstagramFeed($limit = 20)
+    {
+        if (!$this->authorized('MetaFacebook'))
+        {
+            return;
+        }
+
+        return $this->customise([
+          'Posts' => $this->InstagramPosts($limit)
+        ])->renderWith('Views/InstagramFeed');
     }
 
     public function Posts($limit = 20)
