@@ -27,11 +27,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/goldfinch/silverstripe-encrypt"
+            "url": "https://github.com/goldfinch/silverstripe-encrypt/tree/ss5"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/goldfinch/silverstripe-jsontext"
+            "url": "https://github.com/goldfinch/silverstripe-jsontext/tree/ss5"
         }
     ],
     "minimum-stability": "dev",
