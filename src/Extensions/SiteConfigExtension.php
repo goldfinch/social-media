@@ -80,9 +80,9 @@ class SiteConfigExtension extends DataExtension
                       LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
-                      ($this->owner->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '')
+                      ($this->owner->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->owner->MetaFacebookLastSync ? ('Posts synced ' . Carbon::parse($this->owner->MetaFacebookLastSync)->diffForHumans() . '') : '')
+                      ($this->owner->MetaFacebookLastSync ? ('Posts synced ' . Carbon::parse($this->owner->MetaFacebookLastSync)->diffForHumans() . '') : '<div></div>')
                       .
                       ($this->owner->MetaFacebookAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->owner->MetaFacebookAccessTokenExpiresIn)->diffForHumans() . '' : '')
                     ),
@@ -116,9 +116,9 @@ class SiteConfigExtension extends DataExtension
                       LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
-                      ($this->owner->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '')
+                      ($this->owner->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->owner->MetaInstagramLastSync ? ('Posts synced ' . Carbon::parse($this->owner->MetaInstagramLastSync)->diffForHumans() . '') : '')
+                      ($this->owner->MetaInstagramLastSync ? ('Posts synced ' . Carbon::parse($this->owner->MetaInstagramLastSync)->diffForHumans() . '') : '<div></div>')
                       .
                       ($this->owner->MetaInstagramAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->owner->MetaInstagramAccessTokenExpiresIn)->diffForHumans() . '' : '')
                     ),
