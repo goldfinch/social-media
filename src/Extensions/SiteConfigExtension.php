@@ -75,9 +75,9 @@ class SiteConfigExtension extends DataExtension
                     FieldGroup::create(
 
                       DatetimeField::create('MetaFacebookLongAccessTokenLastRefresh', 'Last Long-Lived Access Token Refresh')->setReadonly(true),
-                      LiteralField::create('MetaFacebookAcceLongssTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 20px"><span class="btn__title">Refresh</span></a>'),
+                      LiteralField::create('MetaFacebookAcceLongssTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Refresh</span></a>'),
                       DatetimeField::create('MetaFacebookLastSync', 'Last Posts Sync')->setReadonly(true),
-                      LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 20px"><span class="btn__title">Sync</span></a>'),
+                      LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
                       ($this->owner->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '')
@@ -111,9 +111,9 @@ class SiteConfigExtension extends DataExtension
                     FieldGroup::create(
 
                       DatetimeField::create('MetaInstagramLongAccessTokenLastRefresh', 'Last Long-Lived Access Token Refresh')->setReadonly(true),
-                      LiteralField::create('MetaInstagramLongAccessTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 20px"><span class="btn__title">Refresh</span></a>'),
+                      LiteralField::create('MetaInstagramLongAccessTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Refresh</span></a>'),
                       DatetimeField::create('MetaInstagramLastSync', 'Last Posts Sync')->setReadonly(true),
-                      LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 20px"><span class="btn__title">Sync</span></a>'),
+                      LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
                       ($this->owner->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '')
