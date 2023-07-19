@@ -7,3 +7,7 @@ After:
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Goldfinch\SocialKit\Extensions\SiteConfigExtension
+
+SilverStripe\Control\Director:
+  rules:
+    'api/meta': App\Controllers\ApiMetaController
