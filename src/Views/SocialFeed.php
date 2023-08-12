@@ -9,10 +9,6 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 
 class SocialFeed extends ViewableData
 {
-    private static $casting = [
-        'FacebookPosts' => DBHTMLText::class,
-    ];
-
     public function FacebookPosts($limit = 20)
     {
         if (!$this->authorized('MetaFacebook'))
@@ -45,7 +41,7 @@ class SocialFeed extends ViewableData
 
     public function InstagramFeed($limit = 20)
     {
-        if (!$this->authorized('MetaFacebook'))
+        if (!$this->authorized('MetaInstagram'))
         {
             return;
         }
