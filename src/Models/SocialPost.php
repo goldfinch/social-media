@@ -146,12 +146,39 @@ class SocialPost extends DataObject
 
         if ($this->isInstagram())
         {
-            return $dr->caption;
+            return $this->instagramParser($dr->caption);
         }
         else if ($this->isFacebook())
         {
             return $dr->message;
         }
+    }
+
+    protected function instagramParser($text)
+    {
+        $cfg = $this->config();
+
+        if ($cfg->get('post_tag_link'))
+        {
+            $text = preg_replace('/#([\w.]+)/u', '<a href="https://www.instagram.com/explore/tags/$1/" target="_blank">#$1</a>', $text);
+        }
+
+        if ($cfg->get('post_at_link'))
+        {
+            $text = preg_replace('/@([\w.]+)/u', '<a href="https://www.instagram.com/$1/" target="_blank">@$1</a>', $text);
+        }
+
+        if ($cfg->get('post_links'))
+        {
+            $text = preg_replace("#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"\\2\" target=\"_blank\" rel=\"nofollow\">\\2</a>", $text);
+        }
+
+        if ($cfg->get('post_no_break'))
+        {
+            $text = str_replace(PHP_EOL, '', $text);
+        }
+
+        return $text;
     }
 
     public function postDate($format = 'Y-m-d H:i:s')
@@ -188,34 +215,17 @@ class SocialPost extends DataObject
 
         if ($this->isInstagram())
         {
-            if ($dr->media_type == 'VIDEO')
-            {
-                return 'video';
-            }
-            else if ($dr->media_type == 'IMAGE')
-            {
-                return 'image';
-            }
-            else
-            {
-                return $dr->media_type;
-            }
+            return $dr->media_type;
         }
         else if ($this->isFacebook())
         {
-            if ($dr->status_type == 'added_video')
-            {
-                return 'video';
-            }
-            else if ($dr->status_type == 'added_photos')
-            {
-                return 'image';
-            }
-            else
-            {
-                return $dr->status_type;
-            }
+            return $dr->status_type;
         }
+    }
+
+    public function postIconType()
+    {
+        return $this->renderWith('Partials/IconType');
     }
 
     public function postTags()
