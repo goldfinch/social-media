@@ -24,16 +24,6 @@
             "Goldfinch\\SocialKit\\": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/goldfinch/silverstripe-encrypt"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/goldfinch/silverstripe-jsontext"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
