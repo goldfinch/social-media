@@ -9,58 +9,100 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 
 class SocialFeed extends ViewableData
 {
-    public function FacebookPosts($limit = 20)
+    public function FacebookPosts($limit = null)
     {
         if (!$this->authorized('MetaFacebook'))
         {
             return;
+        }
+
+        if ($limit === null)
+        {
+            $cfg = $this->getCfg();
+            $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
         }
 
         return SocialPost::get()->filter('Type', 'facebook')->limit($limit);
     }
 
-    public function FacebookFeed($limit = 20)
+    public function FacebookFeed($limit = null)
     {
         if (!$this->authorized('MetaFacebook'))
         {
             return;
         }
 
+        if ($limit === null)
+        {
+            $cfg = $this->getCfg();
+            $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
+        }
+
         return $this->renderWith('Views/FacebookFeed');
     }
 
-    public function InstagramPosts($limit = 20)
+    public function InstagramPosts($limit = null)
     {
         if (!$this->authorized('MetaInstagram'))
         {
             return;
+        }
+
+        if ($limit === null)
+        {
+            $cfg = $this->getCfg();
+            $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
+
         }
 
         return SocialPost::get()->filter('Type', 'instagram')->limit($limit);
     }
 
-    public function InstagramFeed($limit = 20)
+    public function InstagramFeed($limit = null)
     {
         if (!$this->authorized('MetaInstagram'))
         {
             return;
         }
 
+        if ($limit === null)
+        {
+            $cfg = $this->getCfg();
+            $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
+        }
+
         return $this->renderWith('Views/InstagramFeed');
     }
 
-    public function Posts($limit = 20)
+    public function Posts($limit = null)
     {
+        $cfg = $this->getCfg();
+
         if ($this->authorized('MetaFacebook') && $this->authorized('MetaInstagram'))
         {
+            if ($limit === null)
+            {
+                $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? ($cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10);
+            }
+
             return SocialPost::get()->limit($limit);
         }
         else if ($this->authorized('MetaFacebook'))
         {
+            if ($limit === null)
+            {
+                $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
+            }
+
             return SocialPost::get()->filter('Type', 'facebook')->limit($limit);
         }
         else if ($this->authorized('MetaInstagram'))
         {
+            if ($limit === null)
+            {
+                $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
+            }
+
             return SocialPost::get()->filter('Type', 'instagram')->limit($limit);
         }
         else
@@ -89,5 +131,10 @@ class SocialFeed extends ViewableData
         }
 
         return false;
+    }
+
+    private function getCfg()
+    {
+        return SiteConfig::current_site_config();
     }
 }
