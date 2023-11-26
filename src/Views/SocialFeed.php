@@ -1,11 +1,11 @@
 <?php
 
-namespace Goldfinch\SocialKit\Views;
+namespace Goldfinch\SocialMedia\Views;
 
-use Goldfinch\SocialKit\Models\SocialPost;
 use SilverStripe\View\ViewableData;
-use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use Goldfinch\SocialMedia\Models\SocialMediaPost;
+use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
 
 class SocialFeed extends ViewableData
 {
@@ -22,7 +22,7 @@ class SocialFeed extends ViewableData
             $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
         }
 
-        return SocialPost::get()->filter('Type', 'facebook')->limit($limit);
+        return SocialMediaPost::get()->filter('Type', 'facebook')->limit($limit);
     }
 
     public function FacebookFeed($limit = null)
@@ -55,7 +55,7 @@ class SocialFeed extends ViewableData
 
         }
 
-        return SocialPost::get()->filter('Type', 'instagram')->limit($limit);
+        return SocialMediaPost::get()->filter('Type', 'instagram')->limit($limit);
     }
 
     public function InstagramFeed($limit = null)
@@ -85,7 +85,7 @@ class SocialFeed extends ViewableData
                 $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? ($cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10);
             }
 
-            return SocialPost::get()->limit($limit);
+            return SocialMediaPost::get()->limit($limit);
         }
         else if ($this->authorized('MetaFacebook'))
         {
@@ -94,7 +94,7 @@ class SocialFeed extends ViewableData
                 $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
             }
 
-            return SocialPost::get()->filter('Type', 'facebook')->limit($limit);
+            return SocialMediaPost::get()->filter('Type', 'facebook')->limit($limit);
         }
         else if ($this->authorized('MetaInstagram'))
         {
@@ -103,7 +103,7 @@ class SocialFeed extends ViewableData
                 $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
             }
 
-            return SocialPost::get()->filter('Type', 'instagram')->limit($limit);
+            return SocialMediaPost::get()->filter('Type', 'instagram')->limit($limit);
         }
         else
         {
@@ -123,7 +123,7 @@ class SocialFeed extends ViewableData
 
     private function authorized($state)
     {
-        $cfg = SiteConfig::current_site_config();
+        $cfg = SocialMediaConfig::current_site_config();
 
         if ($cfg->$state)
         {
@@ -135,6 +135,6 @@ class SocialFeed extends ViewableData
 
     private function getCfg()
     {
-        return SiteConfig::current_site_config();
+        return SocialMediaConfig::current_site_config();
     }
 }

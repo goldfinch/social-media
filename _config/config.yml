@@ -1,19 +1,19 @@
 ---
-Name: goldfinch-socialkit
+Name: goldfinch-socialmedia
 After:
   - '#goldfinch-basement'
 ---
 
-Goldfinch\SocialKit\Models\SocialPost:
+Goldfinch\SocialMedia\Models\SocialPost:
   post_tag_link: true
   post_at_link: true
   post_no_break: true
   post_links: true
 
-SilverStripe\SiteConfig\SiteConfig:
-  extensions:
-    - Goldfinch\SocialKit\Extensions\SiteConfigExtension
-
 SilverStripe\Control\Director:
   rules:
     'api/meta': App\Controllers\ApiMetaController
+
+Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
+  extensions:
+    - Goldfinch\Helpers\Extensions\BlocksAdminExtension

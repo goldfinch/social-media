@@ -1,8 +1,8 @@
 <?php
 
-namespace Goldfinch\SocialKit\Providers;
+namespace Goldfinch\SocialMedia\Providers;
 
-use Goldfinch\SocialKit\Views\SocialFeed;
+use Goldfinch\SocialMedia\Views\SocialFeed;
 use SilverStripe\View\TemplateGlobalProvider;
 
 class SocialMetaTemplateProvider implements TemplateGlobalProvider

@@ -1,13 +1,15 @@
 <?php
 
-namespace Goldfinch\SocialKit\Extensions;
+namespace Goldfinch\SocialMedia\Configs;
 
 use Carbon\Carbon;
+use JonoM\SomeConfig\SomeConfig;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use LeKoala\Encrypt\EncryptHelper;
 use SilverStripe\Forms\FieldGroup;
-use SilverStripe\ORM\DataExtension;
 use LeKoala\Encrypt\EncryptedDBText;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\CheckboxField;
@@ -19,36 +21,40 @@ use LeKoala\Encrypt\EncryptedDBVarchar;
 use LeKoala\Encrypt\HasEncryptedFields;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
 
-class SiteConfigExtension extends DataExtension
+class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 {
-    use HasEncryptedFields;
+    use HasEncryptedFields, SomeConfig;
+
+    private static $table_name = 'SocialMediaConfig';
 
     private static $db = [
-        'MetaFacebook' => 'Boolean',
-        'MetaFacebookLastSync' => 'Datetime',
-        'MetaFacebookLongAccessTokenLastRefresh' => 'Datetime',
-        'MetaFacebookAccessTokenExpiresIn' => 'Varchar',
-        'MetaFacebookAccessToken' => EncryptedDBText::class,
-        'MetaFacebookLongAccessToken' => EncryptedDBText::class,
-        'MetaFacebookAppSecret' => EncryptedDBVarchar::class,
-        'MetaFacebookAppId' => EncryptedDBVarchar::class,
-        'MetaFacebookPageId' => EncryptedDBVarchar::class,
-        'MetaFacebookFields' => EncryptedDBText::class,
-        'MetaFacebookLimit' => EncryptedDBVarchar::class,
+      'MetaFacebook' => 'Boolean',
+      'MetaFacebookLastSync' => 'Datetime',
+      'MetaFacebookLongAccessTokenLastRefresh' => 'Datetime',
+      'MetaFacebookAccessTokenExpiresIn' => 'Varchar',
+      'MetaFacebookAccessToken' => EncryptedDBText::class,
+      'MetaFacebookLongAccessToken' => EncryptedDBText::class,
+      'MetaFacebookAppSecret' => EncryptedDBVarchar::class,
+      'MetaFacebookAppId' => EncryptedDBVarchar::class,
+      'MetaFacebookPageId' => EncryptedDBVarchar::class,
+      'MetaFacebookFields' => EncryptedDBText::class,
+      'MetaFacebookLimit' => EncryptedDBVarchar::class,
 
-        'MetaInstagram' => 'Boolean',
-        'MetaInstagramLastSync' => 'Datetime',
-        'MetaInstagramLongAccessTokenLastRefresh' => 'Datetime',
-        'MetaInstagramAccessTokenExpiresIn' => 'Varchar',
-        'MetaInstagramAccessToken' => EncryptedDBText::class,
-        'MetaInstagramLongAccessToken' => EncryptedDBText::class,
-        'MetaInstagramAppSecret' => EncryptedDBVarchar::class,
-        'MetaInstagramFields' => EncryptedDBText::class,
-        'MetaInstagramLimit' => EncryptedDBVarchar::class,
-    ];
+      'MetaInstagram' => 'Boolean',
+      'MetaInstagramLastSync' => 'Datetime',
+      'MetaInstagramLongAccessTokenLastRefresh' => 'Datetime',
+      'MetaInstagramAccessTokenExpiresIn' => 'Varchar',
+      'MetaInstagramAccessToken' => EncryptedDBText::class,
+      'MetaInstagramLongAccessToken' => EncryptedDBText::class,
+      'MetaInstagramAppSecret' => EncryptedDBVarchar::class,
+      'MetaInstagramFields' => EncryptedDBText::class,
+      'MetaInstagramLimit' => EncryptedDBVarchar::class,
+  ];
 
-    public function updateCMSFields(FieldList $fields)
+    public function getCMSFields()
     {
+        $fields = parent::getCMSFields();
+
         $fields->addFieldsToTab('Root.Configurations', [
 
             CompositeField::create(
@@ -131,6 +137,8 @@ class SiteConfigExtension extends DataExtension
 
         // Set Encrypted Data
         $this->nestEncryptedData($fields);
+
+        return $fields;
     }
 
     public function validate(ValidationResult $validationResult)
@@ -138,7 +146,7 @@ class SiteConfigExtension extends DataExtension
         // $validationResult->addError('Error message');
     }
 
-    protected function nestEncryptedData(FieldList $fields)
+    protected function nestEncryptedData(FieldList &$fields)
     {
         foreach($this::$db as $name => $type)
         {

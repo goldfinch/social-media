@@ -1,6 +1,6 @@
 <?php
 
-namespace Goldfinch\SocialKit\Models;
+namespace Goldfinch\SocialMedia\Models;
 
 use Carbon\Carbon;
 use SilverStripe\ORM\ArrayList;
@@ -8,9 +8,9 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\View\ArrayData;
 use PhpTek\JSONText\ORM\FieldType\JSONText;
 
-class SocialPost extends DataObject
+class SocialMediaPost extends DataObject
 {
-    private static $table_name = 'SocialPost';
+    private static $table_name = 'SocialMediaPost';
 
     private static $db = [
         'Type' => 'Enum("facebook,instagram", "facebook")',

@@ -1,5 +1,5 @@
 {
-    "name": "goldfinch/socialkit",
+    "name": "goldfinch/social-media",
     "description": "",
     "type": "silverstripe-vendormodule",
     "keywords": [
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Goldfinch\\SocialKit\\": "src/"
+            "Goldfinch\\SocialMedia\\": "src/"
         }
     },
     "minimum-stability": "dev",

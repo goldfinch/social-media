@@ -1,8 +1,8 @@
 <?php
 
-namespace Goldfinch\SocialKit\CronTasks;
+namespace Goldfinch\SocialMedia\CronTasks;
 
-use Goldfinch\SocialKit\Services\SocialMeta;
+use Goldfinch\SocialMedia\Services\SocialMeta;
 use SilverStripe\CronTask\Interfaces\CronTask;
 
 class SocialMediaRefreshTokenCronTask implements CronTask

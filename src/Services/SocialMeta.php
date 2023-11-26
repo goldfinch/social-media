@@ -1,13 +1,13 @@
 <?php
 
-namespace Goldfinch\SocialKit\Services;
+namespace Goldfinch\SocialMedia\Services;
 
 use Carbon\Carbon;
 use GuzzleHttp\Client;
-use Goldfinch\SocialKit\Models\SocialPost;
 use GuzzleHttp\Psr7\Response;
-use SilverStripe\SiteConfig\SiteConfig;
 use GuzzleHttp\Exception\ClientException;
+use Goldfinch\SocialMedia\Models\SocialMediaPost;
+use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
 
 class SocialMeta
 {
@@ -51,7 +51,7 @@ class SocialMeta
 
     private function configInit()
     {
-        $this->cfg = SiteConfig::current_site_config();
+        $this->cfg = SocialMediaConfig::current_config();
 
         $this->facebook = [
             'page_id' => $this->cfg->dbObject('MetaFacebookPageId')->getValue(),
@@ -353,7 +353,7 @@ class SocialMeta
 
     private function syncPost($feed, $type)
     {
-        $post = SocialPost::get()->filter([
+        $post = SocialMediaPost::get()->filter([
           'Type' => ucfirst($type),
           'PostID' => $feed['id'],
         ])->first();
@@ -378,7 +378,7 @@ class SocialMeta
                 $date = Carbon::now();
             }
 
-            $post = new SocialPost;
+            $post = new SocialMediaPost;
             $post->PostID = $feed['id'];
             $post->PostDate = $date->format('Y-m-d H:i:s');
             $post->Type = $type;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Goldfinch\SocialKit\Controllers;
+namespace Goldfinch\SocialMedia\Controllers;
 
 use SilverStripe\Security\Security;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Security\Permission;
-use Goldfinch\SocialKit\Services\SocialMeta;
+use Goldfinch\SocialMedia\Services\SocialMeta;
 
 class ApiMetaController extends Controller
 {

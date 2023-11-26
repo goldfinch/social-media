@@ -1,8 +1,8 @@
 <?php
 
-namespace Goldfinch\SocialKit\Tasks;
+namespace Goldfinch\SocialMedia\Tasks;
 
-use Goldfinch\SocialKit\Services\SocialMeta;
+use Goldfinch\SocialMedia\Services\SocialMeta;
 use SilverStripe\Dev\BuildTask;
 
 class SocialMediaSyncBuildTask extends BuildTask
