@@ -10,7 +10,7 @@ use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 
-class SocialMedia extends ModelAdmin
+class SocialMediaAdmin extends ModelAdmin
 {
     use SomeConfigAdmin;
 
