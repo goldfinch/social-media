@@ -2,10 +2,11 @@
 
 namespace Goldfinch\SocialMedia\Configs;
 
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use Carbon\Carbon;
+use SilverStripe\Assets\Image;
 use JonoM\SomeConfig\SomeConfig;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use LeKoala\Encrypt\EncryptHelper;
@@ -20,6 +21,7 @@ use SilverStripe\ORM\ValidationResult;
 use LeKoala\Encrypt\EncryptedDBVarchar;
 use LeKoala\Encrypt\HasEncryptedFields;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
+use SilverStripe\View\TemplateGlobalProvider;
 
 class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 {
@@ -62,11 +64,30 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
         'MetaInstagramLimit' => EncryptedDBVarchar::class,
     ];
 
+    private static $has_one = [
+        'DefaultPostImage' => Image::class,
+    ];
+
+    private static $owns = [
+        'DefaultPostImage',
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
 
         $fields->removeByName([
+            'GeneralFacebook',
+            'GeneralFacebookURL',
+            'GeneralInstagram',
+            'GeneralInstagramURL',
+            'GeneralTwitter',
+            'GeneralTwitterURL',
+            'GeneralLinkedIn',
+            'GeneralLinkedInURL',
+            'GeneralYouTube',
+            'GeneralYouTubeURL',
+
             'MetaFacebook',
             'MetaFacebookLastSync',
             'MetaFacebookLongAccessTokenLastRefresh',
@@ -92,6 +113,11 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 
         $fields->addFieldsToTab('Root.API', [
 
+            UploadField::create(
+              'DefaultPostImage',
+              'Default post image',
+            )->setDescription('for posts that do not have an image, or by some reason return nothing'),
+
             CompositeField::create(
 
                 CheckboxField::create('MetaFacebook', 'Facebook API'),
@@ -109,16 +135,16 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 
                     TextField::create('MetaFacebookPageId', 'Page ID')->setDescription('<a href="https://www.facebook.com/help/1503421039731588" target="_blank">Find your Facebook Page ID</a>'),
 
-                    TextareaField::create('MetaFacebookFields', 'Fields')->setDescription('Get the full <a href="https://developers.facebook.com/docs/workplace/integrations/custom-integrations/reference/post/#fields" target="_blank">list of fields here</a>'),
+                    TextareaField::create('MetaFacebookFields', 'Fields')->setDescription('Get the full <a href="https://developers.facebook.com/docs/graph-api/reference/v18.0/page/feed#readfields" target="_blank">list of fields here</a>'),
 
                     TextField::create('MetaFacebookLimit', 'Limit'),
 
                     FieldGroup::create(
 
                       DatetimeField::create('MetaFacebookLongAccessTokenLastRefresh', 'Last Long-Lived Access Token Refresh')->setReadonly(true),
-                      LiteralField::create('MetaFacebookAcceLongssTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Refresh</span></a>'),
+                      LiteralField::create('MetaFacebookAcceLongssTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Refresh</span></a>'),
                       DatetimeField::create('MetaFacebookLastSync', 'Last Posts Sync')->setReadonly(true),
-                      LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Sync</span></a>'),
+                      LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
                       ($this->owner->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
@@ -152,9 +178,9 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                     FieldGroup::create(
 
                       DatetimeField::create('MetaInstagramLongAccessTokenLastRefresh', 'Last Long-Lived Access Token Refresh')->setReadonly(true),
-                      LiteralField::create('MetaInstagramLongAccessTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Refresh</span></a>'),
+                      LiteralField::create('MetaInstagramLongAccessTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Refresh</span></a>'),
                       DatetimeField::create('MetaInstagramLastSync', 'Last Posts Sync')->setReadonly(true),
-                      LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-top: 20px"><span class="btn__title">Sync</span></a>'),
+                      LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
                       ($this->owner->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
@@ -166,7 +192,7 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 
                 )->displayIf('MetaInstagram')->isChecked()->end(),
 
-            ),
+            )
 
         ]);
 

@@ -16,7 +16,7 @@ class SocialFeed extends ViewableData
             return;
         }
 
-        if ($limit === null)
+        if ($limit === null || $limit === '')
         {
             $cfg = $this->getCfg();
             $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
@@ -32,13 +32,14 @@ class SocialFeed extends ViewableData
             return;
         }
 
-        if ($limit === null)
+        $cfg = $this->getCfg();
+
+        if ($limit === null || $limit === '')
         {
-            $cfg = $this->getCfg();
             $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
         }
 
-        return $this->renderWith('Views/FacebookFeed');
+        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith('Views/FacebookFeed');
     }
 
     public function InstagramPosts($limit = null)
@@ -48,7 +49,7 @@ class SocialFeed extends ViewableData
             return;
         }
 
-        if ($limit === null)
+        if ($limit === null || $limit === '')
         {
             $cfg = $this->getCfg();
             $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
@@ -65,13 +66,48 @@ class SocialFeed extends ViewableData
             return;
         }
 
-        if ($limit === null)
+        $cfg = $this->getCfg();
+
+        if ($limit === null || $limit === '')
         {
-            $cfg = $this->getCfg();
             $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
         }
 
-        return $this->renderWith('Views/InstagramFeed');
+        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith('Views/InstagramFeed');
+    }
+
+    public function MixedPosts($limit = null)
+    {
+        if (!$this->authorized('MetaFacebook') && !$this->authorized('MetaInstagram'))
+        {
+            return;
+        }
+
+        if ($limit === null || $limit === '')
+        {
+            $cfg = $this->getCfg();
+            $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
+
+        }
+
+        return SocialMediaPost::get()->limit($limit);
+    }
+
+    public function MixedFeed($limit = null)
+    {
+        if (!$this->authorized('MetaFacebook') && !$this->authorized('MetaInstagram'))
+        {
+            return;
+        }
+
+        $cfg = $this->getCfg();
+
+        if ($limit === null || $limit === '')
+        {
+            $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? ($cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10);
+        }
+
+        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith('Views/SocialFeed');
     }
 
     public function Posts($limit = null)
@@ -80,7 +116,7 @@ class SocialFeed extends ViewableData
 
         if ($this->authorized('MetaFacebook') && $this->authorized('MetaInstagram'))
         {
-            if ($limit === null)
+            if ($limit === null || $limit === '')
             {
                 $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? ($cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10);
             }
@@ -89,7 +125,7 @@ class SocialFeed extends ViewableData
         }
         else if ($this->authorized('MetaFacebook'))
         {
-            if ($limit === null)
+            if ($limit === null || $limit === '')
             {
                 $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
             }
@@ -98,7 +134,7 @@ class SocialFeed extends ViewableData
         }
         else if ($this->authorized('MetaInstagram'))
         {
-            if ($limit === null)
+            if ($limit === null || $limit === '')
             {
                 $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
             }

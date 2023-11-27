@@ -6,7 +6,11 @@ use Carbon\Carbon;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\ArrayData;
+use SilverStripe\ORM\FieldType\DBText;
+use SilverStripe\ORM\FieldType\DBString;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use PhpTek\JSONText\ORM\FieldType\JSONText;
+use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
 
 class SocialMediaPost extends DataObject
 {
@@ -19,7 +23,44 @@ class SocialMediaPost extends DataObject
         'Data' => JSONText::class,
     ];
 
+    private static $summary_fields = [
+        'summaryThumbnail' => 'Image',
+        'summarySummary' => 'Text',
+        'postType' => 'Post Type',
+        'postDateAgo' => 'Posted at',
+        'Type' => 'Type',
+    ];
+
     private static $default_sort = 'PostDate DESC';
+
+    public function summaryThumbnail()
+    {
+        $img = $this->postImage();
+
+        $link = '<a onclick="window.open(\''.$this->postLink().'\');" href="'.$this->postLink().'" target="_blank">';
+
+        if ($img)
+        {
+            $img = $link . '<img class="action-menu__toggle" src="'. $img. '" alt="Post image" width="140" height="140" style="object-fit: cover" /></a>';
+        }
+        else
+        {
+            $img = $link . '(no image)</a>';
+        }
+
+        $html = DBHTMLText::create();
+        $html->setValue($img);
+
+        return $html;
+    }
+
+    public function summarySummary()
+    {
+        $str = DBText::create();
+        $str->setValue($this->postText());
+
+        return $str->LimitCharacters(200);
+    }
 
     public function validate()
     {
@@ -72,20 +113,36 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
+        $cfg = SocialMediaConfig::current_config();
+
         if ($this->isInstagram())
         {
             if ($dr->media_type == 'VIDEO')
             {
-                return $dr->thumbnail_url;
+                $return = $dr->thumbnail_url;
             }
             else
             {
-                return $dr->media_url;
+                $return = $dr->media_url;
             }
         }
         else if ($this->isFacebook())
         {
-            return $dr->full_picture;
+            $return = $dr->full_picture;
+        }
+
+        if($return && is_array(getimagesize($return)))
+        {
+            return $return;
+        }
+        else if($cfg->DefaultPostImage()->exists())
+        {
+            return $cfg->DefaultPostImage()->getURL();
+
+        }
+        else
+        {
+            return null;
         }
     }
 

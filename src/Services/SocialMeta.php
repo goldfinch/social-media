@@ -96,6 +96,7 @@ class SocialMeta
                     'access_token' => $this->facebook['long_access_token'],
                     'limit' => $this->facebook['limit'],
                     'fields' => $this->facebook['fields'],
+                    // 'published'=> 1,
                 ],
                 'headers' => $this->facebook['headers'],
             ]);

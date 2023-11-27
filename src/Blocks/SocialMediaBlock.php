@@ -10,7 +10,10 @@ class SocialMediaBlock extends BaseElement
     private static $singular_name = 'Social Media';
     private static $plural_name = 'Social Media';
 
-    private static $db = [];
+    private static $db = [
+        'FeedType' => 'Enum("facebook,instagram,mixed", "mixed")',
+        'FeedLimit' => 'Int',
+    ];
 
     private static $inline_editable = false;
     private static $description = '';
@@ -31,9 +34,11 @@ class SocialMediaBlock extends BaseElement
     // private static $default_sort = null;
     // private static $indexes = null;
     // private static $casting = [];
-    // private static $defaults = [];
 
-    // private static $summary_fields = [];
+    private static $field_labels = [
+        'FeedType' => 'Type',
+        'FeedLimit' => 'Post limit',
+    ];
     // private static $field_labels = [];
     // private static $searchable_fields = [];
 
@@ -42,7 +47,9 @@ class SocialMediaBlock extends BaseElement
 
     // * goldfinch/helpers
     // private static $field_descriptions = [];
-    // private static $required_fields = [];
+    private static $required_fields = [
+        'FeedLimit',
+    ];
 
     public function getCMSFields()
     {
