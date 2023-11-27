@@ -123,7 +123,7 @@ class SocialFeed extends ViewableData
 
     private function authorized($state)
     {
-        $cfg = SocialMediaConfig::current_site_config();
+        $cfg = SocialMediaConfig::current_config();
 
         if ($cfg->$state)
         {
@@ -135,6 +135,6 @@ class SocialFeed extends ViewableData
 
     private function getCfg()
     {
-        return SocialMediaConfig::current_site_config();
+        return SocialMediaConfig::current_config();
     }
 }

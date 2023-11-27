@@ -28,6 +28,17 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
     private static $table_name = 'SocialMediaConfig';
 
     private static $db = [
+        'GeneralFacebook' => 'Boolean',
+        'GeneralFacebookURL' => 'Varchar',
+        'GeneralInstagram' => 'Boolean',
+        'GeneralInstagramURL' => 'Varchar',
+        'GeneralTwitter' => 'Boolean',
+        'GeneralTwitterURL' => 'Varchar',
+        'GeneralLinkedIn' => 'Boolean',
+        'GeneralLinkedInURL' => 'Varchar',
+        'GeneralYouTube' => 'Boolean',
+        'GeneralYouTubeURL' => 'Varchar',
+
         'MetaFacebook' => 'Boolean',
         'MetaFacebookLastSync' => 'Datetime',
         'MetaFacebookLongAccessTokenLastRefresh' => 'Datetime',
@@ -55,26 +66,50 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
     {
         $fields = parent::getCMSFields();
 
-        $fields->addFieldsToTab('Root.Configurations', [
+        $fields->removeByName([
+            'MetaFacebook',
+            'MetaFacebookLastSync',
+            'MetaFacebookLongAccessTokenLastRefresh',
+            'MetaFacebookAccessTokenExpiresIn',
+            'MetaFacebookAccessToken',
+            'MetaFacebookLongAccessToken',
+            'MetaFacebookAppSecret',
+            'MetaFacebookAppId',
+            'MetaFacebookPageId',
+            'MetaFacebookFields',
+            'MetaFacebookLimit',
+
+            'MetaInstagram',
+            'MetaInstagramLastSync',
+            'MetaInstagramLongAccessTokenLastRefresh',
+            'MetaInstagramAccessTokenExpiresIn',
+            'MetaInstagramAccessToken',
+            'MetaInstagramLongAccessToken',
+            'MetaInstagramAppSecret',
+            'MetaInstagramFields',
+            'MetaInstagramLimit',
+        ]);
+
+        $fields->addFieldsToTab('Root.API', [
 
             CompositeField::create(
 
-                CheckboxField::create('MetaFacebook', 'Meta Facebook'),
+                CheckboxField::create('MetaFacebook', 'Facebook API'),
                 Wrapper::create(
 
                     LiteralField::create('MetaFacebookRef', 'refer to <a href="https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/" target="_blank">developers.facebook.com/docs</a><br/><br/>'),
 
-                    TextField::create('MetaFacebookAppSecret', 'App Secret'),
+                    TextField::create('MetaFacebookAppSecret', 'App Secret')->setDescription('Get the key in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a> / App settings / Basic'),
 
-                    TextareaField::create('MetaFacebookAccessToken', 'Access Token'),
+                    TextareaField::create('MetaFacebookAccessToken', 'Access Token')->setDescription('<a href="https://developers.facebook.com/tools/explorer/">Get access token</a> with `pages_manage_posts` permission'),
 
-                    TextareaField::create('MetaFacebookLongAccessToken', 'Long-Lived Access Token'),
+                    TextareaField::create('MetaFacebookLongAccessToken', 'Long-Lived Access Token')->setDescription('To get long-lived token use task'),
 
-                    TextField::create('MetaFacebookAppId', 'App ID'),
+                    TextField::create('MetaFacebookAppId', 'App ID')->setDescription('Get ID in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a>'),
 
-                    TextField::create('MetaFacebookPageId', 'Page ID'),
+                    TextField::create('MetaFacebookPageId', 'Page ID')->setDescription('<a href="https://www.facebook.com/help/1503421039731588" target="_blank">Find your Facebook Page ID</a>'),
 
-                    TextareaField::create('MetaFacebookFields', 'Fields'),
+                    TextareaField::create('MetaFacebookFields', 'Fields')->setDescription('Get the full <a href="https://developers.facebook.com/docs/workplace/integrations/custom-integrations/reference/post/#fields" target="_blank">list of fields here</a>'),
 
                     TextField::create('MetaFacebookLimit', 'Limit'),
 
@@ -99,18 +134,18 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 
             CompositeField::create(
 
-                CheckboxField::create('MetaInstagram', 'Meta Instagram'),
+                CheckboxField::create('MetaInstagram', 'Instagram API'),
                 Wrapper::create(
 
                     LiteralField::create('MetaFacebookRef', 'refer to <a href="https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/" target="_blank">developers.facebook.com/docs</a><br/><br/>'),
 
-                    TextField::create('MetaInstagramAppSecret', 'App Secret'),
+                    TextField::create('MetaInstagramAppSecret', 'App Secret')->setDescription('Get the key in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a> / <strong>Instagram Basic Display</strong>'),
 
                     TextareaField::create('MetaInstagramAccessToken', 'Access Token'),
 
-                    TextareaField::create('MetaInstagramLongAccessToken', 'Long-Lived Access Token'),
+                    TextareaField::create('MetaInstagramLongAccessToken', 'Long-Lived Access Token')->setDescription('Get the key in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a> / <strong>Instagram Basic Display</strong> / <strong>User Token Generator</strong>'),
 
-                    TextareaField::create('MetaInstagramFields', 'Fields'),
+                    TextareaField::create('MetaInstagramFields', 'Fields')->setDescription('Get the full <a href="https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields" target="_blank">list of fields here</a>'),
 
                     TextField::create('MetaInstagramLimit', 'Limit'),
 
@@ -134,6 +169,45 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
             ),
 
         ]);
+
+        $fields->addFieldsToTab('Root.Main', [
+
+            CompositeField::create(
+
+                CheckboxField::create('GeneralFacebook', 'Facebook'),
+                TextField::create('GeneralFacebookURL', '')->setAttribute('placeholder', 'https://facebook.com/...')->displayIf('GeneralFacebook')->isChecked()->end(),
+
+            )->setName('GeneralFacebookHolder'),
+
+            CompositeField::create(
+
+                CheckboxField::create('GeneralInstagram', 'Instagram'),
+                TextField::create('GeneralInstagramURL', '')->setAttribute('placeholder', 'https://www.instagram.com/...')->displayIf('GeneralInstagram')->isChecked()->end(),
+
+            )->setName('GeneralInstagramHolder'),
+
+            CompositeField::create(
+
+                CheckboxField::create('GeneralTwitter', 'Twitter'),
+                TextField::create('GeneralTwitterURL', '')->setAttribute('placeholder', 'https://twitter.com/...')->displayIf('GeneralTwitter')->isChecked()->end(),
+
+            )->setName('GeneralTwitterHolder'),
+
+            CompositeField::create(
+
+                CheckboxField::create('GeneralLinkedIn', 'LinkedIn'),
+                TextField::create('GeneralLinkedInURL', '')->setAttribute('placeholder', 'https://www.linkedin.com/...')->displayIf('GeneralLinkedIn')->isChecked()->end(),
+
+            )->setName('GeneralLinkedInHolder'),
+
+            CompositeField::create(
+
+                CheckboxField::create('GeneralYouTube', 'YouTube'),
+                TextField::create('GeneralYouTubeURL', '')->setAttribute('placeholder', 'https://www.youtube.com/...')->displayIf('GeneralYouTube')->isChecked()->end(),
+
+            )->setName('GeneralYouTubeHolder'),
+
+            ]);//->findTab('Root.Main')->setTitle('General links');
 
         // Set Encrypted Data
         $this->nestEncryptedData($fields);
