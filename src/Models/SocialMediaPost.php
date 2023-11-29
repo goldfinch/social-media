@@ -131,7 +131,7 @@ class SocialMediaPost extends DataObject
             $return = $dr->full_picture;
         }
 
-        if($return && is_array(getimagesize($return)))
+        if($return && is_array(@getimagesize($return)))
         {
             return $return;
         }
