@@ -138,7 +138,6 @@ class SocialMediaPost extends DataObject
         else if($cfg->DefaultPostImage()->exists())
         {
             return $cfg->DefaultPostImage()->getURL();
-
         }
         else
         {
