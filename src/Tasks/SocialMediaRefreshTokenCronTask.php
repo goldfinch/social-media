@@ -1,6 +1,6 @@
 <?php
 
-namespace Goldfinch\SocialMedia\CronTasks;
+namespace Goldfinch\SocialMedia\Tasks;
 
 use Goldfinch\SocialMedia\Services\SocialMeta;
 use SilverStripe\CronTask\Interfaces\CronTask;

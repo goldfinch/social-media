@@ -147,11 +147,11 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                       LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
-                      ($this->owner->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
+                      ($this->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->owner->MetaFacebookLastSync ? ('Posts synced ' . Carbon::parse($this->owner->MetaFacebookLastSync)->diffForHumans() . '') : '<div></div>')
+                      ($this->MetaFacebookLastSync ? ('Posts synced ' . Carbon::parse($this->MetaFacebookLastSync)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->owner->MetaFacebookAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->owner->MetaFacebookAccessTokenExpiresIn)->diffForHumans() . '' : '')
+                      ($this->MetaFacebookAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->MetaFacebookAccessTokenExpiresIn)->diffForHumans() . '' : '')
                     ),
 
                 )->displayIf('MetaFacebook')->isChecked()->end(),
@@ -183,11 +183,11 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                       LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
-                      ($this->owner->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->owner->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
+                      ($this->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->owner->MetaInstagramLastSync ? ('Posts synced ' . Carbon::parse($this->owner->MetaInstagramLastSync)->diffForHumans() . '') : '<div></div>')
+                      ($this->MetaInstagramLastSync ? ('Posts synced ' . Carbon::parse($this->MetaInstagramLastSync)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->owner->MetaInstagramAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->owner->MetaInstagramAccessTokenExpiresIn)->diffForHumans() . '' : '')
+                      ($this->MetaInstagramAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->MetaInstagramAccessTokenExpiresIn)->diffForHumans() . '' : '')
                     ),
 
                 )->displayIf('MetaInstagram')->isChecked()->end(),
@@ -247,7 +247,7 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
         {
             if (EncryptHelper::isEncryptedField(get_class($this->owner), $name))
             {
-                $this->owner->$name = $this->owner->dbObject($name)->getValue();
+                $this->$name = $this->dbObject($name)->getValue();
             }
         }
     }
