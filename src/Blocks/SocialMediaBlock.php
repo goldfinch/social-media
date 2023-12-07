@@ -47,9 +47,7 @@ class SocialMediaBlock extends BaseElement
 
     // * goldfinch/helpers
     // private static $field_descriptions = [];
-    private static $required_fields = [
-        'FeedLimit',
-    ];
+    // private static $required_fields = [];
 
     public function getCMSFields()
     {
