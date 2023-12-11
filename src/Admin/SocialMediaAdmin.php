@@ -17,7 +17,7 @@ class SocialMediaAdmin extends ModelAdmin
 
     private static $url_segment = 'social-media';
     private static $menu_title = 'Social media';
-    private static $menu_icon_class = 'bi-instagram';
+    private static $menu_icon_class = 'font-icon-block-instagram';
     // private static $menu_priority = -0.5;
 
     private static $managed_models = [

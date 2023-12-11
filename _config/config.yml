@@ -17,3 +17,13 @@ SilverStripe\Control\Director:
 Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
   extensions:
     - Goldfinch\Helpers\Extensions\BlocksAdminExtension
+
+---
+Name: goldfinch-socialmedia-icon
+Only:
+  moduleexists: 'goldfinch/enchantment'
+---
+
+Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
+  menu_icon_class: 'bi-instagram'
+
