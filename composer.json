@@ -19,7 +19,8 @@
         "guzzlehttp/guzzle": "^7.7",
         "unclecheese/display-logic": "^3.0",
         "dnadesign/silverstripe-elemental": "^5.0",
-        "jonom/silverstripe-someconfig": "^1.0"
+        "jonom/silverstripe-someconfig": "^1.0",
+        "silverstripe/crontask": "^3.0"
     },
     "autoload": {
         "psr-4": {
