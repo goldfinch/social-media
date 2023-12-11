@@ -13,6 +13,7 @@
         "php": ">=8.0",
         "silverstripe/framework": "^5.0",
         "silverstripe/admin": "^2.0",
+        "goldfinch/helpers": "^1.0",
         "nesbot/carbon": "^2.67",
         "lekoala/silverstripe-encrypt": "dev-master",
         "goldfinch/silverstripe-jsontext": "^2.1",
