@@ -27,3 +27,6 @@ Only:
 Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
   menu_icon_class: 'bi-instagram'
 
+Goldfinch\SocialMedia\Blocks\SocialMediaBlock:
+  icon: 'bi-instagram'
+
