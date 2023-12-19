@@ -196,6 +196,8 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 
         ]);
 
+        $fields->dataFieldByName('DefaultPostImage')->setFolderName('social-media');
+
         $fields->addFieldsToTab('Root.Main', [
 
             CompositeField::create(
