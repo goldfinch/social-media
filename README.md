@@ -154,9 +154,6 @@ Instagram posts as `ArrayList`
 <% loop $SocialFeed.InstagramPosts(15) %>
 ```
 
-## Elemental Block
-
-If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), this module comes with *Social Media* block that handles social feeds for you
 
 ## Templates and modifications
 
@@ -165,6 +162,10 @@ To modify templates for your needs, copy them into your *templates* folder. Use 
 ```bash
 php taz templates:social-media
 ```
+
+## Elemental Block
+
+If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), this module comes with *Social Media* block that handles social feeds for you
 
 ## Useful data
 
