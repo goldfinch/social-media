@@ -141,8 +141,8 @@ $SocialFeed.FacebookFeed(15)
 
 Facebook posts as `ArrayList`
 ```html
-$SocialFeed.FacebookPosts
-$SocialFeed.FacebookPosts(15)
+<% loop $SocialFeed.FacebookPosts %>
+<% loop $SocialFeed.FacebookPosts(15) %>
 ```
 
 Instagram feed only
@@ -153,13 +153,13 @@ $SocialFeed.InstagramFeed(15)
 
 Instagram posts as `ArrayList`
 ```html
-$SocialFeed.InstagramPosts
-$SocialFeed.InstagramPosts(15)
+<% loop $SocialFeed.InstagramPosts %>
+<% loop $SocialFeed.InstagramPosts(15) %>
 ```
 
 ## Elemental Block
 
-If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), you can use *Social Media* block that handles social feed
+If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), this module comes with *Social Media* block that handles social feed for you
 
 ## Templates and modifications
 
