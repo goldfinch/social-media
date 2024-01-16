@@ -175,7 +175,7 @@ cp vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss themes/MYTHEME
 
 ## Useful data
 
-### Social link store
+### Social link fields
 
 You can also store social links with this module *Social media > Main*
 
