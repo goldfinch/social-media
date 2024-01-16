@@ -6,9 +6,9 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/goldfinch/social-media.svg?labelColor=333&color=F8C630&label=Downloads)](https://packagist.org/packages/spatie/schema-org)
 [![License](https://img.shields.io/packagist/l/goldfinch/social-media.svg?labelColor=333&color=F8C630&label=License)](https://packagist.org/packages/spatie/schema-org) 
 
-<p><img width="200" src="https://raw.githubusercontent.com/goldfinch/social-media/main/meta.svg" alt="Taz"></p>
-
 Social media Meta Integration for Silverstripe. Fetch and display Facebook/Instagram posts in a simple feed on your website.
+
+<p><img width="100" src="https://raw.githubusercontent.com/goldfinch/social-media/main/meta.svg" alt="Meta"></p>
 
 ## Install
 
