@@ -8,7 +8,7 @@
 
 <p><img width="100" src="https://raw.githubusercontent.com/goldfinch/social-media/main/meta.svg" alt="Meta"></p>
 
-Social media Meta Integration for Silverstripe. Fetch and display Facebook/Instagram posts in a simple feed on your website.
+Social media Meta Integration for Silverstripe. Fetch and display Facebook/Instagram posts as a feed on your website. Easy to customize.
 
 ## Install
 
@@ -16,7 +16,11 @@ Social media Meta Integration for Silverstripe. Fetch and display Facebook/Insta
 composer require goldfinch/social-media
 ```
 
-1. Generate and add encryption key `.env`
+#### 1. Create Meta App
+
+(developers.facebook.com/apps/creation)[https://developers.facebook.com/apps/creation/]
+
+#### 2. Generate encryption key
 
 All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key.
 
@@ -30,16 +34,35 @@ or dumping helper function
 LeKoala\Encrypt\EncryptHelper::generateKey()
 ```
 
-Save the key in `.env`
+#### 3. Save the key in `.env`
 
-*.env*
 `ENCRYPTION_KEY={mykey}`
+
 
 ### Set up a Facebook Feed
 
 
 
 ### Set up an Instagram Feed
+
+- Open `/admin/social-media` and navigate to *Settings* > *API*
+- Enable *Instagram API*
+- Set up the following fields:
+**App Secret**: Instagram App Secret (developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)[https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/]
+**Long-Lived Access Token**: Get token (User Token Generator) *Add or Remove Instagram Testers* (developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)[https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/]
+**Fields**: (developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)[https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields]
+**Limit**: Set post limit (for sync)
+
+- **Save**
+
+- Run task by click on **Sync** `/dev/tasks/SocialMediaSync` button on the same page
+
+## Cron tasks
+
+```
+/dev/tasks/SocialMediaRefresh # once in 4 weeks
+/dev/tasks/SocialMediaSync # once in hour (or as you wish)
+```
 
 ## Usage
 
