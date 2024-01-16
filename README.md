@@ -16,9 +16,48 @@ Social media Meta Integration for Silverstripe. Fetch and display Facebook/Insta
 composer require goldfinch/social-media
 ```
 
+1. Generate and add encryption key `.env`
+
+All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key.
+
+You can generate it using [**Taz**](https://github.com/goldfinch/taz) module by runing CLI command:
+```
+php taz generate:encryption-key
+```
+
+or dumping helper function
+```php
+LeKoala\Encrypt\EncryptHelper::generateKey()
+```
+
+Save the key in `.env`
+
+*.env*
+`ENCRYPTION_KEY={mykey}`
+
+### Set up a Facebook Feed
+
+
+
+### Set up an Instagram Feed
+
 ## Usage
 
 ..
+
+## Useful data
+
+### Instagram fields
+
+```
+caption, id,is_shared_to_feed, media_type,media_url,permalink,thumbnail_url,timestamp,username,children
+```
+
+### Facebook fields
+
+```
+id,actions,admin_creator,allowed_advertising_objects,application,attachments,backdated_time,call_to_action,can_reply_privately,child_attachments,created_time,feed_targeting,from,full_picture,icon,instagram_eligibility,is_eligible_for_promotion,is_expired,is_hidden,is_instagram_eligible,is_popular,is_published,is_spherical,message,message_tags,parent_id,permalink_url,place,privacy,promotable_id,properties,sheduled_publish_time,shares,status_type,story,story_tags,subscribed,targeting,to,updated_time,video_buying_eligibility,likes.summary(total_count),comments.summary(total_count),reactions.summary(total_count)
+```
 
 ## License
 
