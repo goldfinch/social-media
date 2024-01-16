@@ -160,7 +160,7 @@ If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe
 
 ## Templates and modifications
 
-To modify templates for your needs, copy them to your *templates*. Use [**Taz**](https://github.com/goldfinch/taz) command that does that for you
+To modify templates for your needs, copy them into your *templates* folder. Use [**Taz**](https://github.com/goldfinch/taz) command that does that for you
 
 ```bash
 php taz templates:social-media
