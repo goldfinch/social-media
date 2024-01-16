@@ -76,12 +76,11 @@ ENCRYPTION_KEY={mykey}
     
       Set post limit (for sync), `10`
 
-- Make sure to **Save** it all
 
-Now, to get long-live access token click **Get** button or run `/dev/tasks/SocialMediaToken`
+Make sure to **Save** it. All set to go 🎉
 
-All set to go 🎉
-
+To get **Long-Lived Access Token** click **Get** button or run `/dev/tasks/SocialMediaToken`
+ 
 To fetch posts, run the task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 #### 5. Set up an Instagram Feed
@@ -110,9 +109,7 @@ To fetch posts, run the task by clicking the **Sync** button on the same page or
     
       Set post limit (for sync), `10`
 
-- Make sure to **Save** it all
-
-All set to go 🎉
+Make sure to **Save** it. All set to go 🎉
 
 To fetch posts, run the task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
