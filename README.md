@@ -18,7 +18,7 @@ composer require goldfinch/social-media
 
 #### 1. Create Meta App
 
-(developers.facebook.com/apps/creation)[https://developers.facebook.com/apps/creation/]
+[developers.facebook.com/apps/creation](https://developers.facebook.com/apps/creation/)
 
 #### 2. Generate encryption key
 
@@ -48,9 +48,9 @@ LeKoala\Encrypt\EncryptHelper::generateKey()
 - Open `/admin/social-media` and navigate to *Settings* > *API*
 - Enable *Instagram API*
 - Set up the following fields:
-**App Secret**: Instagram App Secret (developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)[https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/]
-**Long-Lived Access Token**: Get token (User Token Generator) *Add or Remove Instagram Testers* (developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)[https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/]
-**Fields**: (developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)[https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields]
+**App Secret**: Instagram App Secret [developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
+**Long-Lived Access Token**: Get token (User Token Generator) *Add or Remove Instagram Testers* [developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
+**Fields**: [developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)
 **Limit**: Set post limit (for sync)
 
 - **Save**
