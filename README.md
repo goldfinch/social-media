@@ -89,16 +89,24 @@ You might want to set up cron tasks for automations
 ```html
 $SocialFeed
 
-$SocialFeed.FacebookFeed(10)
-$SocialFeed.FacebookPosts(10)
+$SocialFeed.FacebookFeed(15)
+$SocialFeed.FacebookPosts(15)
 
-$SocialFeed.InstagramFeed(10)
-$SocialFeed.InstagramPosts(10)
+$SocialFeed.InstagramFeed(15)
+$SocialFeed.InstagramPosts(15)
 ```
 
 ## Elemental Block
 
 ## Templates and modifications
+
+```bash
+mkdir -p themes/MYTHEME/templates/Views
+
+cp vendor/goldfinch/social-media/templates/Views/SocialFeed.ss themes/MYTHEME/templates/Views
+cp vendor/goldfinch/social-media/templates/Views/FacebookFeed.ss themes/MYTHEME/templates/Views
+cp vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss themes/MYTHEME/templates/Views
+```
 
 ## Useful data
 
