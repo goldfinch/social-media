@@ -63,30 +63,42 @@ ENCRYPTION_KEY={mykey}
 
   3) **Fields**: [developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)
 
-      See [all fields](https://github.com/goldfinch/social-media?tab=readme-ov-file#useful-data) that you can copy and paste
+      See [all fields](https://github.com/goldfinch/social-media?tab=readme-ov-file#useful-data) that you can copy and paste here
 
   4) **Limit**:
     
-      Set post limit (for sync)
+      Set post limit (for sync), `10`
 
 - Make sure to **Save** it all
 
 All set to go 🎉
 
-Run task by click the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
+Run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 ## Cron tasks
 
 You might want to set up cron tasks for automations
 
-```yml
+```bash
 /dev/tasks/SocialMediaRefresh # refresh token once in 4 weeks
 /dev/tasks/SocialMediaSync # once in hour (or as you wish)
 ```
 
 ## Usage
 
-..
+```html
+$SocialFeed
+
+$SocialFeed.FacebookFeed(10)
+$SocialFeed.FacebookPosts(10)
+
+$SocialFeed.InstagramFeed(10)
+$SocialFeed.InstagramPosts(10)
+```
+
+## Elemental Block
+
+## Templates and modifications
 
 ## Useful data
 
