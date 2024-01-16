@@ -12,7 +12,7 @@ Social media Meta Integration for Silverstripe. Fetch and display Facebook/Insta
 
 ## Install
 
-```
+```bash
 composer require goldfinch/social-media
 ```
 
@@ -22,10 +22,8 @@ composer require goldfinch/social-media
 
 #### 2. Generate encryption key
 
-All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key.
-
-You can generate it using [**Taz**](https://github.com/goldfinch/taz) module by runing CLI command:
-```
+All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key. You can generate it using [**Taz**](https://github.com/goldfinch/taz) module by runing CLI command:
+```bash
 php taz generate:encryption-key
 ```
 
@@ -36,7 +34,9 @@ LeKoala\Encrypt\EncryptHelper::generateKey()
 
 #### 3. Save the key in `.env`
 
-`ENCRYPTION_KEY={mykey}`
+```bash
+ENCRYPTION_KEY={mykey}
+```
 
 
 ### Set up a Facebook Feed
@@ -59,7 +59,7 @@ LeKoala\Encrypt\EncryptHelper::generateKey()
 
 ## Cron tasks
 
-```
+```bash
 /dev/tasks/SocialMediaRefresh # once in 4 weeks
 /dev/tasks/SocialMediaSync # once in hour (or as you wish)
 ```
