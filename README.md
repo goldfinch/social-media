@@ -45,17 +45,26 @@ ENCRYPTION_KEY={mykey}
 
 ### Set up an Instagram Feed
 
-- Open `/admin/social-media` and navigate to *Settings* > *API*
-- Enable *Instagram API*
+- Open **Social media** admin module that comes with this package `/admin/social-media` and navigate to *Settings > API*
+- Enable *Instagram API* (checkbox)
 - Set up the following fields:
-**App Secret**: Instagram App Secret [developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
-**Long-Lived Access Token**: Get token (User Token Generator) *Add or Remove Instagram Testers* [developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
-**Fields**: [developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)
-**Limit**: Set post limit (for sync)
 
-- **Save**
+  1) **App Secret**
+[developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
+Instagram App Secret
 
-- Run task by click on **Sync** `/dev/tasks/SocialMediaSync` button on the same page
+  2) **Long-Lived Access Token**
+[developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
+Get token (User Token Generator) *Add or Remove Instagram Testers*
+
+  3) **Fields**: [developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)
+See [all fields] that you can copy and paste (https://github.com/goldfinch/social-media?tab=readme-ov-file#useful-data)
+
+  4) **Limit**: Set post limit (for sync)
+
+- Make sure to **Save** it all
+
+All set to go. Run task by click the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 ## Cron tasks
 
@@ -73,7 +82,7 @@ ENCRYPTION_KEY={mykey}
 ### Instagram fields
 
 ```
-caption, id,is_shared_to_feed, media_type,media_url,permalink,thumbnail_url,timestamp,username,children
+caption,id,is_shared_to_feed, media_type,media_url,permalink,thumbnail_url,timestamp,username,children
 ```
 
 ### Facebook fields
