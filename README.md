@@ -169,7 +169,7 @@ If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe
 
 ## Useful data
 
-### Social link fields
+#### Social link fields
 
 You can also store social links with this module *Social media > Main*
 
@@ -185,13 +185,13 @@ You can also store social links with this module *Social media > Main*
 <% end_with %>
 ```
 
-### Instagram fields
+#### Instagram fields
 
 ```
 caption,id,is_shared_to_feed, media_type,media_url,permalink,thumbnail_url,timestamp,username,children
 ```
 
-### Facebook fields
+#### Facebook fields
 
 ```
 id,actions,admin_creator,allowed_advertising_objects,application,attachments,backdated_time,call_to_action,can_reply_privately,child_attachments,created_time,feed_targeting,from,full_picture,icon,instagram_eligibility,is_eligible_for_promotion,is_expired,is_hidden,is_instagram_eligible,is_popular,is_published,is_spherical,message,message_tags,parent_id,permalink_url,place,privacy,promotable_id,properties,sheduled_publish_time,shares,status_type,story,story_tags,subscribed,targeting,to,updated_time,video_buying_eligibility,likes.summary(total_count),comments.summary(total_count),reactions.summary(total_count)
