@@ -50,26 +50,37 @@ ENCRYPTION_KEY={mykey}
 - Set up the following fields:
 
   1) **App Secret**
-[developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
-Instagram App Secret
+  
+      Go to [developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/)
+      
+      Get *Instagram App Secret*
 
   2) **Long-Lived Access Token**
-[developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/{APPID}/instagram-basic-display/basic-display/)
-Get token (User Token Generator) *Add or Remove Instagram Testers*
+      
+      Go to [developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/)
+
+      Get *Get token (User Token Generator) - Add or Remove Instagram Testers*
 
   3) **Fields**: [developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)
-See [all fields] that you can copy and paste (https://github.com/goldfinch/social-media?tab=readme-ov-file#useful-data)
 
-  4) **Limit**: Set post limit (for sync)
+      See [all fields](https://github.com/goldfinch/social-media?tab=readme-ov-file#useful-data) that you can copy and paste
+
+  4) **Limit**:
+    
+      Set post limit (for sync)
 
 - Make sure to **Save** it all
 
-All set to go. Run task by click the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
+All set to go 🎉
+
+Run task by click the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 ## Cron tasks
 
-```bash
-/dev/tasks/SocialMediaRefresh # once in 4 weeks
+You might want to set up cron tasks for automations
+
+```yml
+/dev/tasks/SocialMediaRefresh # refresh token once in 4 weeks
 /dev/tasks/SocialMediaSync # once in hour (or as you wish)
 ```
 
