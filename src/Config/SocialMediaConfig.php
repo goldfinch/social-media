@@ -42,27 +42,27 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
         'GeneralYouTubeURL' => 'Varchar',
 
         'MetaFacebook' => 'Boolean',
-        'MetaFacebookLastSync' => 'Datetime',
-        'MetaFacebookLongAccessTokenLastRefresh' => 'Datetime',
-        'MetaFacebookAccessTokenExpiresIn' => 'Varchar',
-        'MetaFacebookAccessToken' => EncryptedDBText::class,
-        'MetaFacebookLongAccessToken' => EncryptedDBText::class,
-        'MetaFacebookAppSecret' => EncryptedDBVarchar::class,
         'MetaFacebookAppId' => EncryptedDBVarchar::class,
         'MetaFacebookPageId' => EncryptedDBVarchar::class,
+        'MetaFacebookAppSecret' => EncryptedDBVarchar::class,
+        'MetaFacebookAccessToken' => EncryptedDBText::class,
+        'MetaFacebookAccessTokenExpiresIn' => 'Varchar',
+        'MetaFacebookLongAccessToken' => EncryptedDBText::class,
+        'MetaFacebookLongAccessTokenLastRefresh' => 'Datetime',
         'MetaFacebookFields' => EncryptedDBText::class,
         'MetaFacebookLimit' => EncryptedDBVarchar::class,
+        'MetaFacebookLastSync' => 'Datetime',
 
         'MetaInstagram' => 'Boolean',
-        'MetaInstagramLastSync' => 'Datetime',
-        'MetaInstagramLongAccessTokenLastRefresh' => 'Datetime',
-        'MetaInstagramAccessTokenExpiresIn' => 'Varchar',
-        'MetaInstagramAccessToken' => EncryptedDBText::class,
-        'MetaInstagramLongAccessToken' => EncryptedDBText::class,
         'MetaInstagramAppID' => EncryptedDBVarchar::class,
         'MetaInstagramAppSecret' => EncryptedDBVarchar::class,
+        'MetaInstagramAccessToken' => EncryptedDBText::class,
+        'MetaInstagramAccessTokenExpiresIn' => 'Varchar',
+        'MetaInstagramLongAccessToken' => EncryptedDBText::class,
+        'MetaInstagramLongAccessTokenLastRefresh' => 'Datetime',
         'MetaInstagramFields' => EncryptedDBText::class,
         'MetaInstagramLimit' => EncryptedDBVarchar::class,
+        'MetaInstagramLastSync' => 'Datetime',
     ];
 
     private static $has_one = [
@@ -128,6 +128,20 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                     ),
 
                     TextField::create(
+                        'MetaFacebookAppId',
+                        'App ID',
+                    )->setDescription(
+                        'Get ID in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a>',
+                    ),
+
+                    TextField::create(
+                        'MetaFacebookPageId',
+                        'Page ID',
+                    )->setDescription(
+                        '<a href="https://www.facebook.com/help/1503421039731588" target="_blank">Find your Facebook Page ID</a>',
+                    ),
+
+                    TextField::create(
                         'MetaFacebookAppSecret',
                         'App Secret',
                     )->setDescription(
@@ -145,20 +159,6 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                         'MetaFacebookLongAccessToken',
                         'Long-Lived Access Token',
                     )->setDescription('To get long-lived token use task'),
-
-                    TextField::create(
-                        'MetaFacebookAppId',
-                        'App ID',
-                    )->setDescription(
-                        'Get ID in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a>',
-                    ),
-
-                    TextField::create(
-                        'MetaFacebookPageId',
-                        'Page ID',
-                    )->setDescription(
-                        '<a href="https://www.facebook.com/help/1503421039731588" target="_blank">Find your Facebook Page ID</a>',
-                    ),
 
                     TextareaField::create(
                         'MetaFacebookFields',

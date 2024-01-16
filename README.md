@@ -38,10 +38,51 @@ LeKoala\Encrypt\EncryptHelper::generateKey()
 ENCRYPTION_KEY={mykey}
 ```
 
-
 ### Set up a Facebook Feed
 
+- Open **Social media** admin module that comes with this package `/admin/social-media` and navigate to *Settings > API*
+- Enable *Facebook API* (checkbox)
+- Set up the following fields:
 
+  1) **App ID**
+  
+      Go to [developers.facebook.com/apps/__MYAPPID__/settings/basic](https://developers.facebook.com/apps/__MYAPPID__/settings/basic/)
+      
+      Get *App ID*
+
+  2) **App Secret**
+  
+      Go to [developers.facebook.com/apps/__MYAPPID__/settings/basic](https://developers.facebook.com/apps/__MYAPPID__/settings/basic/)
+      
+      Get *App secret*
+
+  3) **Page ID**
+      
+      Go to [https://www.facebook.com/__MYPAGE__/about_profile_transparency](https://www.facebook.com/__MYPAGE__/about_profile_transparency)
+
+      *Page transparency* reveals *Page ID*
+
+  4) **Access Token**
+      
+      Go to [developers.facebook.com/tools/explorer](https://developers.facebook.com/tools/explorer/)
+
+      Select *Meta App*, *User Token*, with `pages_manage_posts` permission and *Generate Access Token*
+
+  5) **Fields**: [developers.facebook.com/docs/graph-api/reference/v18.0/page/feed#readfields](https://developers.facebook.com/docs/graph-api/reference/v18.0/page/feed#readfields)
+
+      See [all fields](https://github.com/goldfinch/social-media?tab=readme-ov-file#facebook-fields) that you can copy and paste here
+
+  6) **Limit**:
+    
+      Set post limit (for sync), `10`
+
+- Make sure to **Save** it all
+
+Now, to get long-live access token clikc **Get** button or run `/dev/tasks/SocialMediaToken`
+
+All set to go 🎉
+
+To fetch posts, run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 ### Set up an Instagram Feed
 
@@ -51,19 +92,19 @@ ENCRYPTION_KEY={mykey}
 
   1) **App Secret**
   
-      Go to [developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/)
+      Go to [developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display](https://developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/)
       
       Get *Instagram App Secret*
 
   2) **Long-Lived Access Token**
       
-      Go to [developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/](https://developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/)
+      Go to [developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display](https://developers.facebook.com/apps/__MYAPPID__/instagram-basic-display/basic-display/)
 
       Get *Get token (User Token Generator) - Add or Remove Instagram Testers*
 
   3) **Fields**: [developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields)
 
-      See [all fields](https://github.com/goldfinch/social-media?tab=readme-ov-file#useful-data) that you can copy and paste here
+      See [all fields](https://github.com/goldfinch/social-media?tab=readme-ov-file#instagram-fields) that you can copy and paste here
 
   4) **Limit**:
     
@@ -73,7 +114,7 @@ ENCRYPTION_KEY={mykey}
 
 All set to go 🎉
 
-Run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
+To fetch posts, run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 ## Cron tasks
 
@@ -86,19 +127,43 @@ You might want to set up cron tasks for automations
 
 ## Usage
 
+Mixed social feed with Facebook & Instagram posts (sorted by post date)
+
 ```html
 $SocialFeed
+```
 
+Facebook feed only
+```html
+$SocialFeed.FacebookFeed
 $SocialFeed.FacebookFeed(15)
-$SocialFeed.FacebookPosts(15)
+```
 
+Facebook posts as `ArrayList`
+```html
+$SocialFeed.FacebookPosts
+$SocialFeed.FacebookPosts(15)
+```
+
+Instagram feed only
+```html
+$SocialFeed.InstagramFeed
 $SocialFeed.InstagramFeed(15)
+```
+
+Instagram posts as `ArrayList`
+```html
+$SocialFeed.InstagramPosts
 $SocialFeed.InstagramPosts(15)
 ```
 
 ## Elemental Block
 
+If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), you can use *Social Media* block that handles social feed
+
 ## Templates and modifications
+
+To modify templates for your needs, copy them to your *templates*
 
 ```bash
 mkdir -p themes/MYTHEME/templates/Views
@@ -109,6 +174,22 @@ cp vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss themes/MYTHEME
 ```
 
 ## Useful data
+
+## Social link store
+
+You can also store social links with this module *Social media > Main*
+
+```html
+<% with SocialMediaConfig %>
+  <% if GeneralFacebook %>
+    <a href="{$GeneralFacebookURL}" target="_blank" rel="nofollow">Facebook</a>
+  <% end_if %>
+  <% if GeneralInstagram %>
+    <a href="{$GeneralInstagramURL}" target="_blank" rel="nofollow">Instagram</a>
+  <% end_if %>
+  <%-- same for Twitter, LinkedIn, YouTube --%>
+<% end_with %>
+```
 
 ### Instagram fields
 

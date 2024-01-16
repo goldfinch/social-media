@@ -1,5 +1,8 @@
 
+
+
 #TODO
+- Facebook Instagram split tasks
 - MetaInstagramAccessToken > MetaInstagramLongAccessToken ?
 - save images, crop, compress
 - focus point
