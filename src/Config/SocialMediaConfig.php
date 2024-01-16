@@ -59,6 +59,7 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
         'MetaInstagramAccessTokenExpiresIn' => 'Varchar',
         'MetaInstagramAccessToken' => EncryptedDBText::class,
         'MetaInstagramLongAccessToken' => EncryptedDBText::class,
+        'MetaInstagramAppID' => EncryptedDBVarchar::class,
         'MetaInstagramAppSecret' => EncryptedDBVarchar::class,
         'MetaInstagramFields' => EncryptedDBText::class,
         'MetaInstagramLimit' => EncryptedDBVarchar::class,
@@ -106,6 +107,7 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
             'MetaInstagramAccessTokenExpiresIn',
             'MetaInstagramAccessToken',
             'MetaInstagramLongAccessToken',
+            'MetaInstagramAppID',
             'MetaInstagramAppSecret',
             'MetaInstagramFields',
             'MetaInstagramLimit',
@@ -164,6 +166,8 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                 Wrapper::create(
 
                     LiteralField::create('MetaFacebookRef', 'refer to <a href="https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/" target="_blank">developers.facebook.com/docs</a><br/><br/>'),
+
+                    TextField::create('MetaInstagramAppID', 'App ID')->setDescription('Get the App ID in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a> / <strong>Instagram Basic Display</strong>'),
 
                     TextField::create('MetaInstagramAppSecret', 'App Secret')->setDescription('Get the key in <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Apps</a> / <strong>Instagram Basic Display</strong>'),
 
