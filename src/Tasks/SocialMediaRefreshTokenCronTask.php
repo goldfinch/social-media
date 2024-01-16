@@ -25,7 +25,9 @@ class SocialMediaRefreshTokenCronTask implements CronTask
     {
         $service = new SocialMeta();
 
-        // refresh for Facebook (TODO) check if never-expired-long-lived-token requires refresh
         $service->InstagramRefreshLongToken();
+
+        // for Facebook we get new Long Live token instead
+        $service->FacebookGetLongLiveToken();
     }
 }

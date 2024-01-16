@@ -58,7 +58,7 @@ ENCRYPTION_KEY={mykey}
 
   3) **Page ID**
       
-      Go to [https://www.facebook.com/__MYPAGE__/about_profile_transparency](https://www.facebook.com/__MYPAGE__/about_profile_transparency)
+      Go to [www.facebook.com/__MYPAGE__/about_profile_transparency](https://www.facebook.com/__MYPAGE__/about_profile_transparency)
 
       *Page transparency* reveals *Page ID*
 
