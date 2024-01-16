@@ -105,7 +105,7 @@ class SocialMeta
             $response = $e->getResponse();
         }
 
-        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300)
         {
             $feeds = json_decode($response->getBody(), true)['data'];
 
@@ -152,7 +152,7 @@ class SocialMeta
             $response = $e->getResponse();
         }
 
-        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300)
         {
             $feeds = json_decode($response->getBody(), true)['data'];
 
@@ -192,7 +192,7 @@ class SocialMeta
             $response = $e->getResponse();
         }
 
-        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300)
         {
             $data = json_decode($response->getBody(), true);
 
@@ -237,7 +237,7 @@ class SocialMeta
             $response = $e->getResponse();
         }
 
-        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300)
         {
             $data = json_decode($response->getBody(), true);
 
@@ -281,7 +281,7 @@ class SocialMeta
             $response = $e->getResponse();
         }
 
-        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300)
         {
             $data = json_decode($response->getBody(), true);
 
@@ -328,7 +328,7 @@ class SocialMeta
             $response = $e->getResponse();
         }
 
-        if ($response->getStatusCode() >= 200  && $response->getStatusCode() < 300)
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300)
         {
             $data = json_decode($response->getBody(), true);
 

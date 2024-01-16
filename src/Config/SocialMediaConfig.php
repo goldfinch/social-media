@@ -142,16 +142,16 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                     FieldGroup::create(
 
                       DatetimeField::create('MetaFacebookLongAccessTokenLastRefresh', 'Last Long-Lived Access Token Refresh')->setReadonly(true),
-                      LiteralField::create('MetaFacebookAcceLongssTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Refresh</span></a>'),
+                      LiteralField::create('MetaFacebookAcceLongssTokenLastRefresh_Btn', '<a href="/dev/tasks/SocialMediaToken" target="_blank" class="btn btn-primary font-icon-link btn-social-media-task" style="margin-bottom: 0; height: 36px; padding-top: 7px;"><span class="btn__title">Get</span></a><a href="/dev/tasks/SocialMediaRefresh" target="_blank" class="btn btn-primary font-icon-sync" style="margin-bottom: 0; height: 36px; padding-top: 7px;"><span class="btn__title">Refresh</span></a>'),
                       DatetimeField::create('MetaFacebookLastSync', 'Last Posts Sync')->setReadonly(true),
-                      LiteralField::create('MetaFacebookLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Sync</span></a>'),
+                      LiteralField::create('MetaFacebookLastSync_Btn', '<a href="/dev/tasks/SocialMediaSync" target="_blank" class="btn btn-primary font-icon-sync btn-social-media-task" style="margin-bottom: 0; height: 36px; padding-top: 7px;"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
                       ($this->MetaFacebookLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->MetaFacebookLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->MetaFacebookLastSync ? ('Posts synced ' . Carbon::parse($this->MetaFacebookLastSync)->diffForHumans() . '') : '<div></div>')
+                      ($this->MetaFacebookLastSync ? (' Posts synced ' . Carbon::parse($this->MetaFacebookLastSync)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->MetaFacebookAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->MetaFacebookAccessTokenExpiresIn)->diffForHumans() . '' : '')
+                      ($this->MetaFacebookAccessTokenExpiresIn ? '<br>Current token expires in ' . Carbon::parse($this->MetaFacebookAccessTokenExpiresIn)->diffForHumans() . '' : '')
                     ),
 
                 )->displayIf('MetaFacebook')->isChecked()->end(),
@@ -178,16 +178,16 @@ class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
                     FieldGroup::create(
 
                       DatetimeField::create('MetaInstagramLongAccessTokenLastRefresh', 'Last Long-Lived Access Token Refresh')->setReadonly(true),
-                      LiteralField::create('MetaInstagramLongAccessTokenLastRefresh_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Refresh</span></a>'),
+                      LiteralField::create('MetaInstagramLongAccessTokenLastRefresh_Btn', '<a href="/dev/tasks/SocialMediaToken" target="_blank" class="btn btn-primary font-icon-link btn-social-media-task" style="margin-bottom: 0; height: 36px; padding-top: 7px;"><span class="btn__title">Get</span></a><a href="/dev/tasks/SocialMediaRefresh" target="_blank" class="btn btn-primary font-icon-sync btn-social-media-task" style="margin-bottom: 0; height: 36px; padding-top: 7px;"><span class="btn__title">Refresh</span></a>'),
                       DatetimeField::create('MetaInstagramLastSync', 'Last Posts Sync')->setReadonly(true),
-                      LiteralField::create('MetaInstagramLastSync_Btn', '<a href="#" class="btn action btn-primary font-icon-sync" style="margin-bottom: 23px;height: 38px;padding-top: 8px;"><span class="btn__title">Sync</span></a>'),
+                      LiteralField::create('MetaInstagramLastSync_Btn', '<a href="/dev/tasks/SocialMediaSync" target="_blank" class="btn btn-primary font-icon-sync" style="margin-bottom: 0; height: 36px; padding-top: 7px;"><span class="btn__title">Sync</span></a>'),
 
                     )->setDescription(
                       ($this->MetaInstagramLongAccessTokenLastRefresh ? ('Token refreshed ' . Carbon::parse($this->MetaInstagramLongAccessTokenLastRefresh)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->MetaInstagramLastSync ? ('Posts synced ' . Carbon::parse($this->MetaInstagramLastSync)->diffForHumans() . '') : '<div></div>')
+                      ($this->MetaInstagramLastSync ? ('<br>Posts synced ' . Carbon::parse($this->MetaInstagramLastSync)->diffForHumans() . '') : '<div></div>')
                       .
-                      ($this->MetaInstagramAccessTokenExpiresIn ? 'Current token expires in ' . Carbon::parse($this->MetaInstagramAccessTokenExpiresIn)->diffForHumans() . '' : '')
+                      ($this->MetaInstagramAccessTokenExpiresIn ? '<br>Current token expires in ' . Carbon::parse($this->MetaInstagramAccessTokenExpiresIn)->diffForHumans() . '' : '')
                     ),
 
                 )->displayIf('MetaInstagram')->isChecked()->end(),

@@ -1,14 +1,25 @@
 {
     "name": "goldfinch/social-media",
-    "description": "",
+    "description": "Facebook/Instagram API (META) integration for Silverstripe",
     "type": "silverstripe-vendormodule",
     "keywords": [
-        "silverstripe"
+        "silverstripe",
+        "instagram",
+        "facebook",
+        "instagram-silverstripe",
+        "facebook-silverstripe",
+        "social-media",
+        "social-media-silverstripe",
+        "meta",
+        "facebook-developers"
     ],
     "license": "MIT",
-    "authors": [{
-        "name": "Artem Karasev"
-    }],
+    "authors": [
+        {
+            "name": "Art Karasev",
+            "email": "art.karasev@proton.me"
+        }
+    ],
     "require": {
         "php": ">=8.0",
         "silverstripe/framework": "^5.0",
