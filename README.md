@@ -22,7 +22,7 @@ composer require goldfinch/social-media
 
 #### 2. Generate encryption key
 
-All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key. You can generate it using [**Taz**](https://github.com/goldfinch/taz) module by runing CLI command:
+All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key. You can generate it using [**Taz**](https://github.com/goldfinch/taz) module by running CLI command:
 ```bash
 php taz generate:encryption-key
 ```
@@ -78,11 +78,11 @@ ENCRYPTION_KEY={mykey}
 
 - Make sure to **Save** it all
 
-Now, to get long-live access token clikc **Get** button or run `/dev/tasks/SocialMediaToken`
+Now, to get long-live access token click **Get** button or run `/dev/tasks/SocialMediaToken`
 
 All set to go 🎉
 
-To fetch posts, run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
+To fetch posts, run the task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 #### 5. Set up an Instagram Feed
 
@@ -114,11 +114,11 @@ To fetch posts, run task by clicking the **Sync** button on the same page or jum
 
 All set to go 🎉
 
-To fetch posts, run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
+To fetch posts, run the task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
 ## Cron tasks
 
-You might want to set up cron tasks for automations
+You might want to set up cron tasks for automation
 
 ```bash
 /dev/tasks/SocialMediaRefresh # refresh token once in 4 weeks
@@ -159,7 +159,7 @@ Instagram posts as `ArrayList`
 
 ## Elemental Block
 
-If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), this module comes with *Social Media* block that handles social feed for you
+If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental), this module comes with *Social Media* block that handles social feeds for you
 
 ## Templates and modifications
 
@@ -175,7 +175,7 @@ cp vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss themes/MYTHEME
 
 ## Useful data
 
-## Social link store
+### Social link store
 
 You can also store social links with this module *Social media > Main*
 
