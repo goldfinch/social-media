@@ -77,7 +77,7 @@ ENCRYPTION_KEY={mykey}
       Set post limit (for sync), `10`
 
 
-Make sure to **Save** it. All set to go 🎉
+✅ Make sure to **Save** it. All set to go 🎉
 
 To get **Long-Lived Access Token** click **Get** button or run `/dev/tasks/SocialMediaToken`
  
@@ -109,7 +109,7 @@ To fetch posts, run the task by clicking the **Sync** button on the same page or
     
       Set post limit (for sync), `10`
 
-Make sure to **Save** it. All set to go 🎉
+✅ Make sure to **Save** it. All set to go 🎉
 
 To fetch posts, run the task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
@@ -160,14 +160,10 @@ If you use [silverstripe-elemental](https://github.com/silverstripe/silverstripe
 
 ## Templates and modifications
 
-To modify templates for your needs, copy them to your *templates*
+To modify templates for your needs, copy them to your *templates*. Use [**Taz**](https://github.com/goldfinch/taz) command that does that for you
 
 ```bash
-mkdir -p themes/MYTHEME/templates/Views
-
-cp vendor/goldfinch/social-media/templates/Views/SocialFeed.ss themes/MYTHEME/templates/Views
-cp vendor/goldfinch/social-media/templates/Views/FacebookFeed.ss themes/MYTHEME/templates/Views
-cp vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss themes/MYTHEME/templates/Views
+php taz templates:social-media
 ```
 
 ## Useful data
