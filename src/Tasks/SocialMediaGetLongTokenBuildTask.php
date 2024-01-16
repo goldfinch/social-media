@@ -17,7 +17,7 @@ class SocialMediaGetLongTokenBuildTask extends BuildTask
 
     public function run($request)
     {
-        $service = new SocialMeta;
+        $service = new SocialMeta();
 
         $service->FacebookGetLongLiveToken();
         $service->InstagramGetLongLiveToken();

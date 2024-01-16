@@ -37,14 +37,20 @@ class SocialMediaPost extends DataObject
     {
         $img = $this->postImage();
 
-        $link = '<a onclick="window.open(\''.$this->postLink().'\');" href="'.$this->postLink().'" target="_blank">';
+        $link =
+            '<a onclick="window.open(\'' .
+            $this->postLink() .
+            '\');" href="' .
+            $this->postLink() .
+            '" target="_blank">';
 
-        if ($img)
-        {
-            $img = $link . '<img class="action-menu__toggle" src="'. $img. '" alt="Post image" width="140" height="140" style="object-fit: cover" /></a>';
-        }
-        else
-        {
+        if ($img) {
+            $img =
+                $link .
+                '<img class="action-menu__toggle" src="' .
+                $img .
+                '" alt="Post image" width="140" height="140" style="object-fit: cover" /></a>';
+        } else {
             $img = $link . '(no image)</a>';
         }
 
@@ -115,32 +121,21 @@ class SocialMediaPost extends DataObject
 
         $cfg = SocialMediaConfig::current_config();
 
-        if ($this->isInstagram())
-        {
-            if ($dr->media_type == 'VIDEO')
-            {
+        if ($this->isInstagram()) {
+            if ($dr->media_type == 'VIDEO') {
                 $return = $dr->thumbnail_url;
-            }
-            else
-            {
+            } else {
                 $return = $dr->media_url;
             }
-        }
-        else if ($this->isFacebook())
-        {
+        } elseif ($this->isFacebook()) {
             $return = $dr->full_picture;
         }
 
-        if($return && is_array(@getimagesize($return)))
-        {
+        if ($return && is_array(@getimagesize($return))) {
             return $return;
-        }
-        else if($cfg->DefaultPostImage()->exists())
-        {
+        } elseif ($cfg->DefaultPostImage()->exists()) {
             return $cfg->DefaultPostImage()->getURL();
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
@@ -149,12 +144,9 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
+        if ($this->isInstagram()) {
             return $dr->permalink;
-        }
-        else if ($this->isFacebook())
-        {
+        } elseif ($this->isFacebook()) {
             return $dr->permalink_url;
         }
     }
@@ -163,12 +155,9 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
+        if ($this->isInstagram()) {
             return $this->instagramParser($dr->caption);
-        }
-        else if ($this->isFacebook())
-        {
+        } elseif ($this->isFacebook()) {
             return $dr->message;
         }
     }
@@ -177,23 +166,31 @@ class SocialMediaPost extends DataObject
     {
         $cfg = $this->config();
 
-        if ($cfg->get('post_tag_link'))
-        {
-            $text = preg_replace('/#([\w.]+)/u', '<a href="https://www.instagram.com/explore/tags/$1/" target="_blank">#$1</a>', $text);
+        if ($cfg->get('post_tag_link')) {
+            $text = preg_replace(
+                '/#([\w.]+)/u',
+                '<a href="https://www.instagram.com/explore/tags/$1/" target="_blank">#$1</a>',
+                $text,
+            );
         }
 
-        if ($cfg->get('post_at_link'))
-        {
-            $text = preg_replace('/@([\w.]+)/u', '<a href="https://www.instagram.com/$1/" target="_blank">@$1</a>', $text);
+        if ($cfg->get('post_at_link')) {
+            $text = preg_replace(
+                '/@([\w.]+)/u',
+                '<a href="https://www.instagram.com/$1/" target="_blank">@$1</a>',
+                $text,
+            );
         }
 
-        if ($cfg->get('post_links'))
-        {
-            $text = preg_replace("#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"\\2\" target=\"_blank\" rel=\"nofollow\">\\2</a>", $text);
+        if ($cfg->get('post_links')) {
+            $text = preg_replace(
+                "#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is",
+                "\\1<a href=\"\\2\" target=\"_blank\" rel=\"nofollow\">\\2</a>",
+                $text,
+            );
         }
 
-        if ($cfg->get('post_no_break'))
-        {
+        if ($cfg->get('post_no_break')) {
             $text = str_replace(PHP_EOL, '', $text);
         }
 
@@ -204,13 +201,14 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
-            return Carbon::parse($dr->timestamp)->timezone(date_default_timezone_get())->format($format);
-        }
-        else if ($this->isFacebook())
-        {
-            return Carbon::parse($dr->created_time)->timezone(date_default_timezone_get())->format($format);
+        if ($this->isInstagram()) {
+            return Carbon::parse($dr->timestamp)
+                ->timezone(date_default_timezone_get())
+                ->format($format);
+        } elseif ($this->isFacebook()) {
+            return Carbon::parse($dr->created_time)
+                ->timezone(date_default_timezone_get())
+                ->format($format);
         }
     }
 
@@ -218,13 +216,14 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
-            return Carbon::parse($dr->timestamp)->timezone(date_default_timezone_get())->diffForHumans();
-        }
-        else if ($this->isFacebook())
-        {
-            return Carbon::parse($dr->created_time)->timezone(date_default_timezone_get())->diffForHumans();
+        if ($this->isInstagram()) {
+            return Carbon::parse($dr->timestamp)
+                ->timezone(date_default_timezone_get())
+                ->diffForHumans();
+        } elseif ($this->isFacebook()) {
+            return Carbon::parse($dr->created_time)
+                ->timezone(date_default_timezone_get())
+                ->diffForHumans();
         }
     }
 
@@ -232,12 +231,9 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
+        if ($this->isInstagram()) {
             return $dr->media_type;
-        }
-        else if ($this->isFacebook())
-        {
+        } elseif ($this->isFacebook()) {
             return $dr->status_type;
         }
     }
@@ -251,14 +247,10 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
+        if ($this->isInstagram()) {
             return false;
-        }
-        else if ($this->isFacebook())
-        {
-            if ($dr->message_tags)
-            {
+        } elseif ($this->isFacebook()) {
+            if ($dr->message_tags) {
                 return new ArrayList($dr->message_tags);
             }
         }
@@ -270,22 +262,14 @@ class SocialMediaPost extends DataObject
     {
         $dr = $this->postData();
 
-        if ($this->isInstagram())
-        {
+        if ($this->isInstagram()) {
             return;
-        }
-        else if ($this->isFacebook())
-        {
-            if ($type == 'comments' && $dr->comments)
-            {
+        } elseif ($this->isFacebook()) {
+            if ($type == 'comments' && $dr->comments) {
                 return $dr->comments->summary->total_count;
-            }
-            else if ($type == 'likes' && $dr->likes)
-            {
+            } elseif ($type == 'likes' && $dr->likes) {
                 return $dr->likes->summary->total_count;
-            }
-            else if ($type == 'shares' && $dr->shares)
-            {
+            } elseif ($type == 'shares' && $dr->shares) {
                 return $dr->shares->count;
             }
         }

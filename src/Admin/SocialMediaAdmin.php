@@ -22,13 +22,13 @@ class SocialMediaAdmin extends ModelAdmin
 
     private static $managed_models = [
         SocialMediaPost::class => [
-            'title'=> 'Posts',
+            'title' => 'Posts',
         ],
         SocialMediaBlock::class => [
-            'title'=> 'Blocks',
+            'title' => 'Blocks',
         ],
         SocialMediaConfig::class => [
-            'title'=> 'Settings',
+            'title' => 'Settings',
         ],
     ];
 
@@ -49,8 +49,7 @@ class SocialMediaAdmin extends ModelAdmin
     {
         $config = parent::getGridFieldConfig();
 
-        if ($this->modelClass == SocialMediaPost::class)
-        {
+        if ($this->modelClass == SocialMediaPost::class) {
             $config->removeComponentsByType(GridFieldAddNewButton::class);
             $config->removeComponentsByType(GridFieldEditButton::class);
         }

@@ -17,7 +17,7 @@ class SocialMediaRefreshTokenBuildTask extends BuildTask
 
     public function run($request)
     {
-        $service = new SocialMeta;
+        $service = new SocialMeta();
 
         // refresh for Facebook (TODO) check if never-expired-long-lived-token requires refresh
         $service->InstagramRefreshLongToken();

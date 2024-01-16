@@ -1,9 +1,8 @@
 ---
 Name: goldfinch-socialmedia
 After:
-  - '#goldfinch-basement'
+  - "#goldfinch-basement"
 ---
-
 Goldfinch\SocialMedia\Models\SocialPost:
   post_tag_link: true
   post_at_link: true
@@ -12,7 +11,7 @@ Goldfinch\SocialMedia\Models\SocialPost:
 
 SilverStripe\Control\Director:
   rules:
-    'api/meta': App\Controllers\ApiMetaController
+    "api/meta": App\Controllers\ApiMetaController
 
 Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
   extensions:
@@ -21,12 +20,10 @@ Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
 ---
 Name: goldfinch-socialmedia-icon
 Only:
-  moduleexists: 'goldfinch/enchantment'
+  moduleexists: "goldfinch/enchantment"
 ---
-
 Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
-  menu_icon_class: 'bi-instagram'
+  menu_icon_class: "bi-instagram"
 
 Goldfinch\SocialMedia\Blocks\SocialMediaBlock:
-  icon: 'bi-instagram'
-
+  icon: "bi-instagram"

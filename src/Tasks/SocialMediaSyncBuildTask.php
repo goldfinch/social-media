@@ -17,7 +17,7 @@ class SocialMediaSyncBuildTask extends BuildTask
 
     public function run($request)
     {
-        $service = new SocialMeta;
+        $service = new SocialMeta();
 
         $service->FacebookFeed();
         $service->InstagramFeed();

@@ -14,7 +14,7 @@ class SocialMediaRefreshTokenCronTask implements CronTask
      */
     public function getSchedule()
     {
-        return "0 0 0 ? 1/2 FRI#2 *";
+        return '0 0 0 ? 1/2 FRI#2 *';
     }
 
     /**
@@ -23,7 +23,7 @@ class SocialMediaRefreshTokenCronTask implements CronTask
      */
     public function process()
     {
-        $service = new SocialMeta;
+        $service = new SocialMeta();
 
         // refresh for Facebook (TODO) check if never-expired-long-lived-token requires refresh
         $service->InstagramRefreshLongToken();

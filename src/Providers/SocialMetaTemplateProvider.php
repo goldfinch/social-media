@@ -12,15 +12,13 @@ class SocialMetaTemplateProvider implements TemplateGlobalProvider
      */
     public static function get_template_global_variables(): array
     {
-        return [
-            'SocialFeed'
-        ];
+        return ['SocialFeed'];
     }
 
     /**
      * @return boolean
      */
-    public static function SocialFeed() : SocialFeed
+    public static function SocialFeed(): SocialFeed
     {
         return SocialFeed::create();
     }

@@ -33,45 +33,36 @@ class ApiMetaController extends Controller
         $member = Security::getCurrentUser();
 
         if (!Permission::check('ADMIN', 'any', $member)) {
-            exit;
+            exit();
         }
 
-        $this->smService = new SocialMeta;
+        $this->smService = new SocialMeta();
     }
 
     public function metaGetLongLivedToken(HTTPRequest $request)
     {
-        if ($request->param('Platform') == 'facebook')
-        {
+        if ($request->param('Platform') == 'facebook') {
             $this->smService->FacebookGetLongLiveToken();
-        }
-        else if ($request->param('Platform') == 'instagram')
-        {
+        } elseif ($request->param('Platform') == 'instagram') {
             $this->smService->InstagramGetLongLiveToken();
         }
     }
 
     public function metaRefreshLongToken(HTTPRequest $request)
     {
-        if ($request->param('Platform') == 'facebook')
-        {
+        if ($request->param('Platform') == 'facebook') {
             // just get a new long-lived token
             $this->metaGetLongLivedToken($request);
-        }
-        else if ($request->param('Platform') == 'instagram')
-        {
+        } elseif ($request->param('Platform') == 'instagram') {
             $this->smService->InstagramRefreshLongToken();
         }
     }
 
     public function metaSyncPosts(HTTPRequest $request)
     {
-        if ($request->param('Platform') == 'facebook')
-        {
+        if ($request->param('Platform') == 'facebook') {
             $this->smService->FacebookFeed();
-        }
-        else if ($request->param('Platform') == 'instagram')
-        {
+        } elseif ($request->param('Platform') == 'instagram') {
             $this->smService->InstagramFeed();
         }
     }
