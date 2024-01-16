@@ -38,7 +38,7 @@ LeKoala\Encrypt\EncryptHelper::generateKey()
 ENCRYPTION_KEY={mykey}
 ```
 
-### Set up a Facebook Feed
+#### 4. Set up a Facebook Feed
 
 - Open **Social media** admin module that comes with this package `/admin/social-media` and navigate to *Settings > API*
 - Enable *Facebook API* (checkbox)
@@ -84,7 +84,7 @@ All set to go 🎉
 
 To fetch posts, run task by clicking the **Sync** button on the same page or jump on `/dev/tasks/SocialMediaSync`
 
-### Set up an Instagram Feed
+#### 5. Set up an Instagram Feed
 
 - Open **Social media** admin module that comes with this package `/admin/social-media` and navigate to *Settings > API*
 - Enable *Instagram API* (checkbox)
