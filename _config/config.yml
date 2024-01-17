@@ -1,7 +1,6 @@
 ---
 Name: goldfinch-socialmedia
-After:
-  - "#goldfinch-basement"
+After: "#goldfinch-basement"
 ---
 Goldfinch\SocialMedia\Models\SocialPost:
   post_tag_link: true

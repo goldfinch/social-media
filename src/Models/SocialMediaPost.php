@@ -68,38 +68,6 @@ class SocialMediaPost extends DataObject
         return $str->LimitCharacters(200);
     }
 
-    public function validate()
-    {
-        $result = parent::validate();
-
-        // $result->addError('Error message');
-
-        return $result;
-    }
-
-    public function onBeforeWrite()
-    {
-        // ..
-
-        parent::onBeforeWrite();
-    }
-
-    public function onBeforeDelete()
-    {
-        // ..
-
-        parent::onBeforeDelete();
-    }
-
-    public function getCMSFields()
-    {
-        $fields = parent::getCMSFields();
-
-        // ..
-
-        return $fields;
-    }
-
     public function isInstagram()
     {
         return $this->Type == 'instagram';

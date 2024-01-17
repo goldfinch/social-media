@@ -3,7 +3,6 @@
 namespace Goldfinch\SocialMedia\Views;
 
 use SilverStripe\View\ViewableData;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 use Goldfinch\SocialMedia\Models\SocialMediaPost;
 use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
 

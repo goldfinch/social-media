@@ -2,8 +2,8 @@
 
 namespace Goldfinch\SocialMedia\Tasks;
 
-use Goldfinch\SocialMedia\Services\SocialMeta;
 use SilverStripe\Dev\BuildTask;
+use Goldfinch\SocialMedia\Services\SocialMeta;
 
 class SocialMediaRefreshTokenBuildTask extends BuildTask
 {

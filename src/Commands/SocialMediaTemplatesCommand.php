@@ -18,8 +18,6 @@ class SocialMediaTemplatesCommand extends GeneratorCommand
 
     protected function execute($input, $output): int
     {
-        // parent::execute($input, $output);
-
         $io = new InputOutput($input, $output);
 
         $themes = Finder::create()
@@ -29,20 +27,16 @@ class SocialMediaTemplatesCommand extends GeneratorCommand
 
         $ssTheme = null;
 
-        if (!$themes || !$themes->count())
-        {
+        if (!$themes || !$themes->count()) {
             $io->text('Themes not found');
 
             return Command::SUCCESS;
-        }
-        else if ($themes->count() > 1)
-        {
+        } elseif ($themes->count() > 1) {
             // choose theme
 
             $availableThemes = [];
 
-            foreach ($themes as $theme)
-            {
+            foreach ($themes as $theme) {
                 $availableThemes[] = $theme->getFilename();
             }
 
@@ -50,21 +44,17 @@ class SocialMediaTemplatesCommand extends GeneratorCommand
             $question = new ChoiceQuestion(
                 'Which templete?',
                 $availableThemes,
-                0
+                0,
             );
             $question->setErrorMessage('Theme %s is invalid.');
             $theme = $helper->ask($input, $output, $question);
-        }
-        else
-        {
-            foreach ($themes as $themeItem)
-            {
+        } else {
+            foreach ($themes as $themeItem) {
                 $theme = $themeItem->getFilename();
             }
         }
 
-        if (isset($theme) && $theme)
-        {
+        if (isset($theme) && $theme) {
             $this->copyTemplates($theme);
 
             $io->text('Done');
@@ -77,8 +67,20 @@ class SocialMediaTemplatesCommand extends GeneratorCommand
     {
         $fs = new Filesystem();
 
-        $fs->copy(BASE_PATH . '/vendor/goldfinch/social-media/templates/Views/SocialFeed.ss', 'themes/' . $theme . '/templates/Views/SocialFeed.ss'); // , true);
-        $fs->copy(BASE_PATH . '/vendor/goldfinch/social-media/templates/Views/FacebookFeed.ss', 'themes/' . $theme . '/templates/Views/FacebookFeed.ss'); // , true);
-        $fs->copy(BASE_PATH . '/vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss', 'themes/' . $theme . '/templates/Views/InstagramFeed.ss'); // , true);
+        $fs->copy(
+            BASE_PATH .
+                '/vendor/goldfinch/social-media/templates/Views/SocialFeed.ss',
+            'themes/' . $theme . '/templates/Views/SocialFeed.ss',
+        );
+        $fs->copy(
+            BASE_PATH .
+                '/vendor/goldfinch/social-media/templates/Views/FacebookFeed.ss',
+            'themes/' . $theme . '/templates/Views/FacebookFeed.ss',
+        );
+        $fs->copy(
+            BASE_PATH .
+                '/vendor/goldfinch/social-media/templates/Views/InstagramFeed.ss',
+            'themes/' . $theme . '/templates/Views/InstagramFeed.ss',
+        );
     }
 }

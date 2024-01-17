@@ -2,7 +2,6 @@
 
 namespace Goldfinch\SocialMedia\Configs;
 
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use Carbon\Carbon;
 use SilverStripe\Assets\Image;
 use JonoM\SomeConfig\SomeConfig;
@@ -17,11 +16,11 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\CompositeField;
-use SilverStripe\ORM\ValidationResult;
 use LeKoala\Encrypt\EncryptedDBVarchar;
 use LeKoala\Encrypt\HasEncryptedFields;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
 use SilverStripe\View\TemplateGlobalProvider;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class SocialMediaConfig extends DataObject implements TemplateGlobalProvider
 {
