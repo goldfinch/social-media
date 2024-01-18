@@ -57,10 +57,12 @@ class SocialMediaCommand extends GeneratorCommand
         if (isset($theme) && $theme) {
             $this->copyTemplates($theme);
 
-            $io->text('Done');
+            $io->right('The [social-media] templates have been created');
 
             return Command::SUCCESS;
         }
+
+        $io->wrong('The [social-media] templates creation failed');
 
         return Command::FAILURE;
     }
