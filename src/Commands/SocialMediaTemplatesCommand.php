@@ -61,6 +61,8 @@ class SocialMediaTemplatesCommand extends GeneratorCommand
 
             return Command::SUCCESS;
         }
+
+        return Command::FAILURE;
     }
 
     private function copyTemplates($theme)
