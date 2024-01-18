@@ -9,10 +9,10 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 
-#[AsCommand(name: 'templates:social-media')]
+#[AsCommand(name: 'vendor:social-media-templates')]
 class SocialMediaTemplatesCommand extends GeneratorCommand
 {
-    protected static $defaultName = 'templates:social-media';
+    protected static $defaultName = 'vendor:social-media-templates';
 
     protected $description = 'Publish Social Media templates into your theme folder';
 
