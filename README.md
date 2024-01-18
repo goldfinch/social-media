@@ -160,7 +160,7 @@ Instagram posts as `ArrayList`
 To modify templates for your needs, copy them into your *templates* folder. Use [**Taz**](https://github.com/goldfinch/taz) command that does that for you
 
 ```bash
-php taz vendor:social-media-templates
+php taz vendor:social-media
 ```
 
 ## Elemental Block
