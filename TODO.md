@@ -1,6 +1,6 @@
 #TODO
 - MetaInstagramAccessToken > MetaInstagramLongAccessToken ?
-- save images, crop, compress
+- save images, crop, compress (like youtube)
 - focus point
 - business (likes, comments, extra fields..)
 - album children images

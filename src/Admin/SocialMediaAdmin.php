@@ -46,4 +46,15 @@ class SocialMediaAdmin extends ModelAdmin
 
         return $config;
     }
+
+    public function getManagedModels()
+    {
+        $models = parent::getManagedModels();
+
+        if (!class_exists('DNADesign\Elemental\Models\BaseElement')) {
+            unset($models[SocialMediaBlock::class]);
+        }
+
+        return $models;
+    }
 }
