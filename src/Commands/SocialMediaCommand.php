@@ -14,7 +14,7 @@ class SocialMediaCommand extends GeneratorCommand
 {
     protected static $defaultName = 'vendor:social-media';
 
-    protected $description = 'Publish Social Media templates into your theme folder';
+    protected $description = 'Publish [goldfinch/social-media] templates';
 
     protected function execute($input, $output): int
     {
