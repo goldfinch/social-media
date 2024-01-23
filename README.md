@@ -22,7 +22,7 @@ composer require goldfinch/social-media
 
 #### 2. Generate encryption key
 
-All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key. You can generate it using [**Taz**](https://github.com/goldfinch/taz) module by running CLI command:
+All sensitive data that comes from Meta (ID,secret,tokens) are being encrypted in the database. Therefore we need a key. You can generate it using [**Taz**](https://github.com/goldfinch/taz)🌪️ module by running CLI command:
 ```bash
 php taz generate:encryption-key
 ```
@@ -160,7 +160,7 @@ Instagram posts as `ArrayList`
 To modify templates for your needs, copy them into your *templates* folder. Use [**Taz**](https://github.com/goldfinch/taz) command that does that for you
 
 ```bash
-php taz vendor:social-media
+php taz vendor:social-media:templates
 ```
 
 ## Elemental Block
