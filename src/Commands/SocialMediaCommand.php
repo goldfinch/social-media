@@ -30,7 +30,7 @@ class SocialMediaCommand extends GeneratorCommand
         $ssTheme = null;
 
         if (!$themes || !$themes->count()) {
-            $io->text('Themes not found');
+            $io->wrong('Themes not found');
 
             return Command::SUCCESS;
         } elseif ($themes->count() > 1) {
