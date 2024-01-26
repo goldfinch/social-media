@@ -194,6 +194,10 @@ class SocialMeta
 
     public function InstagramRefreshLongToken()
     {
+        if (!$this->cfg->MetaInstagram) {
+            return;
+        }
+
         if (!$this->instagram['long_access_token']) {
             return $this->returnFailed('Missing credentials', 403);
         }
@@ -243,6 +247,10 @@ class SocialMeta
 
     public function InstagramGetLongLiveToken()
     {
+        if (!$this->cfg->MetaInstagram) {
+            return;
+        }
+
         if (
             !$this->instagram['access_token'] ||
             $this->instagram['app_secret']
@@ -296,6 +304,10 @@ class SocialMeta
 
     public function FacebookGetAccessToken()
     {
+        if (!$this->cfg->MetaFacebook) {
+            return;
+        }
+
         if (!$this->facebook['page_id'] || !$this->facebook['access_token']) {
             return $this->returnFailed('Missing credentials', 403);
         }
@@ -340,6 +352,10 @@ class SocialMeta
 
     public function FacebookGetLongLiveToken()
     {
+        if (!$this->cfg->MetaFacebook) {
+            return;
+        }
+
         if (
             !$this->facebook['app_id'] ||
             !$this->facebook['app_secret'] ||
