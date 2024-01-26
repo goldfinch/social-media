@@ -16,6 +16,8 @@ class SocialMediaCommand extends GeneratorCommand
 
     protected $description = 'Publish [goldfinch/social-media] templates';
 
+    protected $no_arguments = true;
+
     protected function execute($input, $output): int
     {
         $io = new InputOutput($input, $output);
