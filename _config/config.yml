@@ -16,6 +16,9 @@ Goldfinch\SocialMedia\Admin\SocialMediaAdmin:
   extensions:
     - Goldfinch\Helpers\Extensions\BlocksAdminExtension
 
+Goldfinch\SocialMedia\Blocks\SocialMediaBlock:
+  extensions:
+    - Goldfinch\Helpers\Extensions\BaseElementExtension
 ---
 Name: goldfinch-socialmedia-icon
 Only:
