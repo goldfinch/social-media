@@ -16,7 +16,7 @@ class SocialMediaBlock extends BaseElement
     ];
 
     private static $inline_editable = false;
-    private static $description = '';
+    private static $description = 'Social Media block handler';
     private static $icon = 'font-icon-block-instagram';
 
     private static $field_labels = [
