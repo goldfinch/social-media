@@ -154,10 +154,11 @@ Instagram posts as `ArrayList`
 <% loop $SocialFeed.InstagramPosts(15) %>
 ```
 
-
 ## Templates and modifications
 
 To modify templates for your needs, copy them into your *templates* folder. Use [**Taz**](https://github.com/goldfinch/taz) command that does that for you
+
+If you haven't used [**Taz**](https://github.com/goldfinch/taz)🌪️ before, *taz* file must be presented in your root project folder `cp vendor/goldfinch/taz/taz taz`
 
 ```bash
 php taz vendor:social-media:templates
