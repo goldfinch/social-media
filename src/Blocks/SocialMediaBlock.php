@@ -3,9 +3,12 @@
 namespace Goldfinch\SocialMedia\Blocks;
 
 use DNADesign\Elemental\Models\BaseElement;
+use Goldfinch\Helpers\Traits\BaseElementTrait;
 
 class SocialMediaBlock extends BaseElement
 {
+    use BaseElementTrait;
+
     private static $table_name = 'SocialMediaBlock';
     private static $singular_name = 'Social Media';
     private static $plural_name = 'Social Media';
