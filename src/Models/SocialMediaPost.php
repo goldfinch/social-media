@@ -99,7 +99,7 @@ class SocialMediaPost extends DataObject
             $return = $dr->full_picture;
         }
 
-        if ($return && is_array(@getimagesize($return))) {
+        if ($return) { // ! avoid using ` && is_array(@getimagesize($return))`, creates bottlenecks
             return $return;
         } elseif ($cfg->DefaultPostImage()->exists()) {
             return $cfg->DefaultPostImage()->getURL();
