@@ -18,7 +18,6 @@ class SocialMediaRefreshTokenCronTask implements CronTask
     }
 
     /**
-     *
      * @return void
      */
     public function process()

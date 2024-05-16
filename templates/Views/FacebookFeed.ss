@@ -5,10 +5,10 @@
     <div class="col">
       <div class="card">
         <img
+          class="card-img-top"
           src="{$Data.postImage}"
           height="250"
           style="object-fit: cover"
-          class="card-img-top"
           alt="$Data.postText.LimitCharacters(32)"
         />
         <div class="card-body">
@@ -41,9 +41,7 @@
           <div><b>event:</b> $Data.postData.event</div>
           --%>
           <% if $Data.postTags %>
-          <div>
-            <b>message_tags:</b> <% loop $Data.postTags %>$name<% end_loop %>
-          </div>
+          <div><b>message_tags:</b> <% loop $Data.postTags %>$name<% end_loop %></div>
           <% end_if %>
         </div>
       </div>

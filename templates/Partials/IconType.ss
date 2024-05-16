@@ -1,8 +1,8 @@
 <% if isInstagram %>
   <% if postData.media_type == 'CAROUSEL_ALBUM' %>
     <svg
-      aria-label="Carousel"
       class="x1lliihq x1n2onr6"
+      aria-label="Carousel"
       color="rgb(255, 255, 255)"
       fill="rgb(255, 255, 255)"
       height="22"
@@ -17,8 +17,8 @@
     </svg>
   <% else_if postData.media_type == 'VIDEO' %>
     <svg
-      aria-label="Clip"
       class="x1lliihq x1n2onr6"
+      aria-label="Clip"
       color="rgb(255, 255, 255)"
       fill="rgb(255, 255, 255)"
       height="18"

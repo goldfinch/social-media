@@ -2,14 +2,14 @@
 
 namespace Goldfinch\SocialMedia\Admin;
 
-use SilverStripe\Admin\ModelAdmin;
-use JonoM\SomeConfig\SomeConfigAdmin;
-use Goldfinch\SocialMedia\Models\SocialMediaPost;
-use SilverStripe\Forms\GridField\GridFieldConfig;
 use Goldfinch\SocialMedia\Blocks\SocialMediaBlock;
 use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
-use SilverStripe\Forms\GridField\GridFieldEditButton;
+use Goldfinch\SocialMedia\Models\SocialMediaPost;
+use JonoM\SomeConfig\SomeConfigAdmin;
+use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Forms\GridField\GridFieldEditButton;
 
 class SocialMediaAdmin extends ModelAdmin
 {
@@ -51,7 +51,7 @@ class SocialMediaAdmin extends ModelAdmin
     {
         $models = parent::getManagedModels();
 
-        if (!class_exists('DNADesign\Elemental\Models\BaseElement')) {
+        if (! class_exists('DNADesign\Elemental\Models\BaseElement')) {
             unset($models[SocialMediaBlock::class]);
         }
 

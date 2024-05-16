@@ -1,4 +1,5 @@
 #TODO
+
 - hide posts if they have been removed on the platform
 - MetaInstagramAccessToken > MetaInstagramLongAccessToken ?
 - save images, crop, compress (like youtube)

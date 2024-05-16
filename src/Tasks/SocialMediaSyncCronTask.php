@@ -18,7 +18,6 @@ class SocialMediaSyncCronTask implements CronTask
     }
 
     /**
-     *
      * @return void
      */
     public function process()

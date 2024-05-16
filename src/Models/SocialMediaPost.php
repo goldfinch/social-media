@@ -3,14 +3,13 @@
 namespace Goldfinch\SocialMedia\Models;
 
 use Carbon\Carbon;
+use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
+use PhpTek\JSONText\ORM\FieldType\JSONText;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\View\ArrayData;
-use SilverStripe\ORM\FieldType\DBText;
-use SilverStripe\ORM\FieldType\DBString;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use PhpTek\JSONText\ORM\FieldType\JSONText;
-use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
+use SilverStripe\ORM\FieldType\DBText;
+use SilverStripe\View\ArrayData;
 
 class SocialMediaPost extends DataObject
 {
@@ -38,20 +37,20 @@ class SocialMediaPost extends DataObject
         $img = $this->postImage();
 
         $link =
-            '<a onclick="window.open(\'' .
-            $this->postLink() .
-            '\');" href="' .
-            $this->postLink() .
+            '<a onclick="window.open(\''.
+            $this->postLink().
+            '\');" href="'.
+            $this->postLink().
             '" target="_blank">';
 
         if ($img) {
             $img =
-                $link .
-                '<img class="action-menu__toggle" src="' .
-                $img .
+                $link.
+                '<img class="action-menu__toggle" src="'.
+                $img.
                 '" alt="Post image" width="140" height="140" style="object-fit: cover" /></a>';
         } else {
-            $img = $link . '(no image)</a>';
+            $img = $link.'(no image)</a>';
         }
 
         $html = DBHTMLText::create();
@@ -99,7 +98,8 @@ class SocialMediaPost extends DataObject
             $return = $dr->full_picture;
         }
 
-        if ($return) { // ! avoid using ` && is_array(@getimagesize($return))`, creates bottlenecks
+        if ($return) {
+            // ! avoid using ` && is_array(@getimagesize($return))`, creates bottlenecks
             return $return;
         } elseif ($cfg->DefaultPostImage()->exists()) {
             return $cfg->DefaultPostImage()->getURL();
@@ -138,7 +138,7 @@ class SocialMediaPost extends DataObject
             $text = preg_replace(
                 '/#([\w.]+)/u',
                 '<a href="https://www.instagram.com/explore/tags/$1/" target="_blank">#$1</a>',
-                $text,
+                $text
             );
         }
 
@@ -146,15 +146,15 @@ class SocialMediaPost extends DataObject
             $text = preg_replace(
                 '/@([\w.]+)/u',
                 '<a href="https://www.instagram.com/$1/" target="_blank">@$1</a>',
-                $text,
+                $text
             );
         }
 
         if ($cfg->get('post_links')) {
             $text = preg_replace(
                 "#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is",
-                "\\1<a href=\"\\2\" target=\"_blank\" rel=\"nofollow\">\\2</a>",
-                $text,
+                '\\1<a href="\\2" target="_blank" rel="nofollow">\\2</a>',
+                $text
             );
         }
 
@@ -242,6 +242,5 @@ class SocialMediaPost extends DataObject
             }
         }
 
-        return;
     }
 }

@@ -2,21 +2,17 @@
 
 namespace Goldfinch\SocialMedia\Controllers;
 
-use SilverStripe\Security\Security;
+use Goldfinch\SocialMedia\Services\SocialMeta;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Security\Permission;
-use Goldfinch\SocialMedia\Services\SocialMeta;
+use SilverStripe\Security\Security;
 
 class ApiMetaController extends Controller
 {
     private static $url_segment = 'api/meta';
 
-    private static $allowed_actions = [
-        'metaGetLongLivedToken',
-        'metaRefreshLongToken',
-        'metaSyncPosts',
-    ];
+    private static $allowed_actions = ['metaGetLongLivedToken', 'metaRefreshLongToken', 'metaSyncPosts'];
 
     private static $url_handlers = [
         '$Platform/get-long-token' => 'metaGetLongLivedToken',
@@ -32,7 +28,7 @@ class ApiMetaController extends Controller
 
         $member = Security::getCurrentUser();
 
-        if (!Permission::check('ADMIN', 'any', $member)) {
+        if (! Permission::check('ADMIN', 'any', $member)) {
             exit();
         }
 

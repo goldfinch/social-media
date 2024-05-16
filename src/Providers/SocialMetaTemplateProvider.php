@@ -16,7 +16,7 @@ class SocialMetaTemplateProvider implements TemplateGlobalProvider
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public static function SocialFeed(): SocialFeed
     {

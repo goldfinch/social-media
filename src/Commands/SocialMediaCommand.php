@@ -2,8 +2,8 @@
 
 namespace Goldfinch\SocialMedia\Commands;
 
-use Goldfinch\Taz\Services\Templater;
 use Goldfinch\Taz\Console\GeneratorCommand;
+use Goldfinch\Taz\Services\Templater;
 
 #[AsCommand(name: 'vendor:social-media:templates')]
 class SocialMediaCommand extends GeneratorCommand
@@ -21,26 +21,24 @@ class SocialMediaCommand extends GeneratorCommand
         $theme = $templater->defineTheme();
 
         if (is_string($theme)) {
-
-            $componentPathTemplates = BASE_PATH . '/vendor/goldfinch/social-media/templates/';
-            $componentPath = $componentPathTemplates . 'Goldfinch/Component/Products/';
-            $themeTemplates = 'themes/' . $theme . '/templates/';
-            $themePath = $themeTemplates . 'Goldfinch/Component/Products/';
+            $componentPathTemplates = BASE_PATH.'/vendor/goldfinch/social-media/templates/';
+            $componentPath = $componentPathTemplates.'Goldfinch/Component/Products/';
+            $themeTemplates = 'themes/'.$theme.'/templates/';
+            $themePath = $themeTemplates.'Goldfinch/Component/Products/';
 
             $files = [
                 [
-                    'from' => $componentPathTemplates . 'Views/SocialFeed.ss',
-                    'to' => $themeTemplates . 'Views/SocialFeed.ss',
+                    'from' => $componentPathTemplates.'Views/SocialFeed.ss',
+                    'to' => $themeTemplates.'Views/SocialFeed.ss',
                 ],
                 [
-                    'from' => $componentPathTemplates . 'Views/FacebookFeed.ss',
-                    'to' => $themeTemplates . 'Views/FacebookFeed.ss',
+                    'from' => $componentPathTemplates.'Views/FacebookFeed.ss',
+                    'to' => $themeTemplates.'Views/FacebookFeed.ss',
                 ],
                 [
-                    'from' => $componentPathTemplates . 'Views/InstagramFeed.ss',
-                    'to' => $themeTemplates . 'Views/InstagramFeed.ss',
+                    'from' => $componentPathTemplates.'Views/InstagramFeed.ss',
+                    'to' => $themeTemplates.'Views/InstagramFeed.ss',
                 ],
-
             ];
 
             return $templater->copyFiles($files);

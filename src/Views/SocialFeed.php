@@ -2,15 +2,15 @@
 
 namespace Goldfinch\SocialMedia\Views;
 
-use SilverStripe\View\ViewableData;
-use Goldfinch\SocialMedia\Models\SocialMediaPost;
 use Goldfinch\SocialMedia\Configs\SocialMediaConfig;
+use Goldfinch\SocialMedia\Models\SocialMediaPost;
+use SilverStripe\View\ViewableData;
 
 class SocialFeed extends ViewableData
 {
     public function FacebookPosts($limit = null)
     {
-        if (!$this->authorized('MetaFacebook')) {
+        if (! $this->authorized('MetaFacebook')) {
             return;
         }
 
@@ -19,14 +19,12 @@ class SocialFeed extends ViewableData
             $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
         }
 
-        return SocialMediaPost::get()
-            ->filter('Type', 'facebook')
-            ->limit($limit);
+        return SocialMediaPost::get()->filter('Type', 'facebook')->limit($limit);
     }
 
     public function FacebookFeed($limit = null)
     {
-        if (!$this->authorized('MetaFacebook')) {
+        if (! $this->authorized('MetaFacebook')) {
             return;
         }
 
@@ -36,14 +34,12 @@ class SocialFeed extends ViewableData
             $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
         }
 
-        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith(
-            'Views/FacebookFeed',
-        );
+        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith('Views/FacebookFeed');
     }
 
     public function InstagramPosts($limit = null)
     {
-        if (!$this->authorized('MetaInstagram')) {
+        if (! $this->authorized('MetaInstagram')) {
             return;
         }
 
@@ -52,14 +48,12 @@ class SocialFeed extends ViewableData
             $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
         }
 
-        return SocialMediaPost::get()
-            ->filter('Type', 'instagram')
-            ->limit($limit);
+        return SocialMediaPost::get()->filter('Type', 'instagram')->limit($limit);
     }
 
     public function InstagramFeed($limit = null)
     {
-        if (!$this->authorized('MetaInstagram')) {
+        if (! $this->authorized('MetaInstagram')) {
             return;
         }
 
@@ -69,17 +63,12 @@ class SocialFeed extends ViewableData
             $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
         }
 
-        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith(
-            'Views/InstagramFeed',
-        );
+        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith('Views/InstagramFeed');
     }
 
     public function MixedPosts($limit = null)
     {
-        if (
-            !$this->authorized('MetaFacebook') &&
-            !$this->authorized('MetaInstagram')
-        ) {
+        if (! $this->authorized('MetaFacebook') && ! $this->authorized('MetaInstagram')) {
             return;
         }
 
@@ -93,10 +82,7 @@ class SocialFeed extends ViewableData
 
     public function MixedFeed($limit = null)
     {
-        if (
-            !$this->authorized('MetaFacebook') &&
-            !$this->authorized('MetaInstagram')
-        ) {
+        if (! $this->authorized('MetaFacebook') && ! $this->authorized('MetaInstagram')) {
             return;
         }
 
@@ -108,19 +94,14 @@ class SocialFeed extends ViewableData
                 ($cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10);
         }
 
-        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith(
-            'Views/SocialFeed',
-        );
+        return $this->customise(['cfg' => $cfg, 'limit' => $limit])->renderWith('Views/SocialFeed');
     }
 
     public function Posts($limit = null)
     {
         $cfg = $this->getCfg();
 
-        if (
-            $this->authorized('MetaFacebook') &&
-            $this->authorized('MetaInstagram')
-        ) {
+        if ($this->authorized('MetaFacebook') && $this->authorized('MetaInstagram')) {
             if ($limit === null || $limit === '') {
                 $limit =
                     $cfg->dbObject('MetaFacebookLimit')->getValue() ??
@@ -133,17 +114,13 @@ class SocialFeed extends ViewableData
                 $limit = $cfg->dbObject('MetaFacebookLimit')->getValue() ?? 10;
             }
 
-            return SocialMediaPost::get()
-                ->filter('Type', 'facebook')
-                ->limit($limit);
+            return SocialMediaPost::get()->filter('Type', 'facebook')->limit($limit);
         } elseif ($this->authorized('MetaInstagram')) {
             if ($limit === null || $limit === '') {
                 $limit = $cfg->dbObject('MetaInstagramLimit')->getValue() ?? 10;
             }
 
-            return SocialMediaPost::get()
-                ->filter('Type', 'instagram')
-                ->limit($limit);
+            return SocialMediaPost::get()->filter('Type', 'instagram')->limit($limit);
         } else {
             return;
         }
@@ -151,10 +128,7 @@ class SocialFeed extends ViewableData
 
     public function forTemplate()
     {
-        if (
-            !$this->authorized('MetaFacebook') &&
-            !$this->authorized('MetaInstagram')
-        ) {
+        if (! $this->authorized('MetaFacebook') && ! $this->authorized('MetaInstagram')) {
             return;
         }
 
